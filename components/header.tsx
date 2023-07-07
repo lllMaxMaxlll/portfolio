@@ -16,9 +16,9 @@ function Header() {
 
 	return (
 		<header className="fixed w-screen z-10">
-			<div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-16 py-2">
+			<div className="mx-auto max-w-screen-xl px-5 sm:px-6 lg:px-16 py-2">
 				<div className="flex h-16 items-center justify-between">
-					<div className="text-2xl font-bold transition hover:text-neutral-300/75">
+					<div className="text-xl md:text-2xl font-bold transition hover:text-neutral-300/75">
 						<Link href="/">{"</>"}</Link>
 					</div>
 
