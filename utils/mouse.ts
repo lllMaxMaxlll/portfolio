@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 interface MousePosition {
@@ -5,7 +7,7 @@ interface MousePosition {
 	y: number;
 }
 
-export function useMousePosition(): MousePosition {
+export default function useMousePosition(): MousePosition {
 	const [mousePosition, setMousePosition] = useState<MousePosition>({
 		x: 0,
 		y: 0,
