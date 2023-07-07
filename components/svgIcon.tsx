@@ -19,11 +19,11 @@ function SvgIcon({ title = "test", d = "", size = 24, color }: Icons) {
 	const mousePosition = useMousePosition();
 
 	useEffect(() => {
-		const randomX = Math.round(Math.random() * (window?.innerWidth || 1300));
-		const randomY = Math.round(Math.random() * (window?.innerHeight || 800));
+		const randomX = Math.round(Math.random() * 1300);
+		const randomY = Math.round(Math.random() * 800);
 		setPosition({ x: randomX, y: randomY });
 		if (!mounted) setMounted(true);
-	}, [window.innerWidth]);
+	}, [mounted]);
 
 	useEffect(() => {
 		const mouseX = mousePosition.x;
