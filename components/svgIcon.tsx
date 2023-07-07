@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useMousePosition } from "@/utils/mouse";
+import { useMousePosition } from "../utils";
 
 export type Icons = {
 	title: string;
@@ -19,8 +19,8 @@ function SvgIcon({ title = "test", d = "", size = 24, color }: Icons) {
 	const mousePosition = useMousePosition();
 
 	useEffect(() => {
-		const randomX = Math.random() * (window.innerWidth - 100);
-		const randomY = Math.random() * (window.innerHeight - 100);
+		const randomX = Math.round(Math.random() * window?.innerWidth);
+		const randomY = Math.round(Math.random() * window?.innerHeight);
 		setPosition({ x: randomX, y: randomY });
 		if (!mounted) setMounted(true);
 	}, [window.innerWidth]);
@@ -29,13 +29,8 @@ function SvgIcon({ title = "test", d = "", size = 24, color }: Icons) {
 		const mouseX = mousePosition.x;
 		const mouseY = mousePosition.y;
 
-		setOffsetX((mouseX - position.x) / 6000);
-		setOffsetY((mouseY - position.y) / 6000);
-
-		setPosition((prevPosition) => ({
-			x: prevPosition.x + offsetX,
-			y: prevPosition.y + offsetY,
-		}));
+		setOffsetX(mouseX / 100);
+		setOffsetY(mouseY / 100);
 	}, [mousePosition]);
 
 	if (!mounted) return null;
@@ -47,8 +42,14 @@ function SvgIcon({ title = "test", d = "", size = 24, color }: Icons) {
 			width={size}
 			height={size}
 			fill="#404040"
-			fillOpacity={0.34}
-			style={{ transform: `translate(${position.x}px, ${position.y}px)`, position: "fixed" }}>
+			fillOpacity={0.3}
+			className="animate-pulse"
+			style={{
+				transform: `translate3d(${offsetX}px, ${offsetY}px, ${offsetX / offsetY}px)`,
+				position: "fixed",
+				left: position.x,
+				top: position.y,
+			}}>
 			<title>{title}</title>
 			<path d={d} />
 		</svg>
