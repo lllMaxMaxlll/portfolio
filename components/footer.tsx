@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Github } from "@/utils";
+import { Instagram, Linkedin, Github } from "../utils";
 
 function Footer() {
 	return (
@@ -9,19 +9,19 @@ function Footer() {
 						<nav aria-label="Global" className="hidden md:block z-50">
 							<ul className="flex flex-col items-center gap-6 text-sm ">
 								<a
-									className="fill-neutral-500 transition hover:fill-neutral-200/75 hover:drop-shadow-[0_10px_10px_rgba(255,255,255,0.25)]"
+									className="fill-neutral-500 transition hover:fill-neutral-200/75 hover:drop-shadow-[0_10px_10px_rgba(255,255,255,0.5)] "
 									href="https://github.com/lllMaxMaxlll"
 									target="_blank">
 									<Github />
 								</a>
 								<a
-									className="fill-neutral-500 transition hover:fill-sky-500/75 hover:drop-shadow-[0_10px_10px_rgba(14,118,168,0.25)]"
+									className="fill-neutral-500 transition hover:fill-sky-500/75 hover:drop-shadow-[0_10px_10px_rgba(14,118,168,0.5)] "
 									href="https://www.linkedin.com/in/maximiliano-herr-720634227/"
 									target="_blank">
 									<Linkedin />
 								</a>
 								<a
-									className="fill-neutral-500 transition hover:fill-rose-500/75 hover:drop-shadow-[0_10px_10px_rgba(225,48,108,0.25)]"
+									className="fill-neutral-500 transition hover:fill-rose-500/75 hover:drop-shadow-[0_10px_10px_rgba(225,48,108,0.5)] "
 									href="https://www.instagram.com/_max_herr_/"
 									target="_blank">
 									<Instagram />

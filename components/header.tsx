@@ -26,7 +26,7 @@ function Header() {
 						<nav aria-label="Global" className="hidden md:block">
 							<ul className="flex items-center gap-6 text-sm">
 								{navigation.map((link) => {
-									const isActive = pathname.startsWith(link.href);
+									const isActive = pathname === link.href;
 
 									return (
 										<Link
@@ -61,9 +61,3 @@ function Header() {
 }
 
 export default Header;
-
-/*
-<div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-
-        </div>
-*/

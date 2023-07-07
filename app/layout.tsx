@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/components";
+import { Footer, Header } from "../components";
 import "./globals.css";
 import { Rubik } from "next/font/google";
 
@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${rubik.className} text-neutral-100 bg-neutral-900`}>
+			<body className={`${rubik.className} text-neutral-100 bg-neutral-900 overflow-hidden`}>
 				<Header />
 				{children}
 				<Footer />
