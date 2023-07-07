@@ -1,4 +1,4 @@
-import { Landing, LandingBg } from "@/components";
+import { Landing, LandingBg } from "../components";
 
 export default function Home() {
 	return (
