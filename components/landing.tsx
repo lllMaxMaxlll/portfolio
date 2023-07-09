@@ -1,14 +1,30 @@
 "use client";
 
+import { useMousePosition } from "../utils";
+import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 
 function Landing() {
+	const [position, setPosition] = useState({ x: 0, y: 0 });
+	const mousePosition = useMousePosition();
+
+	useEffect(() => {
+		setPosition(mousePosition);
+	});
+
 	return (
 		<section className="flex justify-center content-center absolute h-screen w-screen">
+			<div
+				className="hidden md:block absolute -top-10 -left-10 -z-10 rounded-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-neutral-700 via-neutral-800 to-transparent blur-3xl"
+				style={{ transform: `translate(${position.x * 0.1}px, ${position.y * 0.1}px)`, width: "50%", height: "30rem" }}></div>
 			<div className="flex flex-col justify-center">
 				<p className="mb-2 ps-2 text-start text-neutral-500 text-base md:text-xl">I AM</p>
-				<h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center">MAX HERR</h1>
-				<div className="text-end mt-2 text-neutral-500 text-base md:text-xl">
+				<h1
+					className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center"
+					style={{ filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px 10px #000000)` }}>
+					MAX HERR
+				</h1>
+				<div className="block text-end mt-2 text-neutral-500 text-base md:text-xl">
 					<Typewriter
 						options={{
 							strings: ["A FRONT END DEVELOPER", "A BACK END DEVELOPER", "A PHOTOGRAPHER"],
