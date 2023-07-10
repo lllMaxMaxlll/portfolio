@@ -4,18 +4,19 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import React from "react";
+import NavMobile from "./navMobile";
 
-const navigation = [
+export const navigation = [
 	{ name: "HOME", href: "/" },
 	{ name: "PROJECTS", href: "/projects" },
-	{ name: "CONTACT", href: "/contact" },
+	{ name: "ABOUT", href: "/about" },
 ];
 
 function Header() {
 	const pathname = usePathname();
 
 	return (
-		<header className="fixed w-screen z-10">
+		<header className="fixed w-screen z-50">
 			<div className="mx-auto max-w-screen-xl px-5 sm:px-6 lg:px-16 py-2">
 				<div className="flex h-16 items-center justify-between">
 					<div className="text-xl md:text-2xl font-bold transition hover:text-neutral-300/75">
@@ -29,31 +30,21 @@ function Header() {
 									const isActive = pathname === link.href;
 
 									return (
-										<Link
-											key={link.href}
-											href={link.href}
-											className={`${isActive ? "text-neutral-200 cursor-default" : "text-neutral-500"} transition hover:text-neutral-300`}>
-											{link.name}
-										</Link>
+										<li key={link.href}>
+											<Link
+												href={link.href}
+												className={`${
+													isActive ? "text-neutral-200 cursor-default" : "text-neutral-500"
+												} transition hover:text-neutral-300`}>
+												{link.name}
+											</Link>
+										</li>
 									);
 								})}
 							</ul>
 						</nav>
-
-						<div className="block md:hidden">
-							<button className="rounded p-2 text-neutral-200 transition hover:text-neutral-500/75">
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									className="h-5 w-5"
-									fill="none"
-									viewBox="0 0 24 24"
-									stroke="currentColor"
-									strokeWidth="2">
-									<path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-								</svg>
-							</button>
-						</div>
 					</div>
+					<NavMobile />
 				</div>
 			</div>
 		</header>
