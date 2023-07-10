@@ -1,4 +1,4 @@
-export default function Contact() {
+export default function About() {
 	return (
 		<section className="flex justify-center content-center absolute h-screen w-screen">
 			<div className="flex flex-col justify-center">
