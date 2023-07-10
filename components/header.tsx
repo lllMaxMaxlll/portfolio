@@ -44,7 +44,7 @@ function Header() {
 							</ul>
 						</nav>
 					</div>
-					<NavMobile />
+					<NavMobile pathname={pathname} />
 				</div>
 			</div>
 		</header>
