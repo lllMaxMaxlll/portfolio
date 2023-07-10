@@ -1,9 +1,14 @@
+import { Carousel3d, CardCarousel } from "../../components";
+import { projects } from "../../utils";
+
 export default function Projects() {
 	return (
-		<section className="flex justify-center content-center absolute h-screen w-screen">
-			<div className="flex flex-col justify-center">
-				<h2 className="text-6xl font-bold text-center">UNDER CONSTRUCTION</h2>
-			</div>
+		<section className="h-screen w-screen">
+			<Carousel3d>
+				{projects.map((p, index) => (
+					<CardCarousel key={index} image={p.image} title={p.title} description={p.description} />
+				))}
+			</Carousel3d>
 		</section>
 	);
 }
