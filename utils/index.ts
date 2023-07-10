@@ -1,4 +1,8 @@
+export { default as ChevronLeft } from "./carouselIcons/left";
+export { default as ChevronRight } from "./carouselIcons/right";
 export { default as Github } from "./footerIcons/githubIcon";
 export { default as Instagram } from "./footerIcons/instagramIcon";
 export { default as Linkedin } from "./footerIcons/linkedinIcon";
+export { default as Mail } from "./footerIcons/mailIcon";
 export { default as useMousePosition } from "./mouse";
+export { projects } from "./projects";
