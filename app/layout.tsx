@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="en" suppressHydrationWarning>
-			<body className={`${rubik.className} text-neutral-100 bg-neutral-900 overflow-hidden`}>
+			<body className={`${rubik.className} text-neutral-100 bg-neutral-900 overflow-hidden`} suppressHydrationWarning>
 				<Header />
 				{children}
 				<Footer />
