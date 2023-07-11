@@ -3,12 +3,10 @@ import { projects } from "../../utils";
 
 export default function Projects() {
 	return (
-		<section className="h-screen w-screen">
-			<Carousel3d>
-				{projects.map((p, index) => (
-					<CardCarousel key={index} image={p.image} title={p.title} description={p.description} />
-				))}
-			</Carousel3d>
-		</section>
+		<Carousel3d>
+			{projects.map((p, index) => (
+				<CardCarousel key={index} image={p.image} title={p.title} description={p.description} />
+			))}
+		</Carousel3d>
 	);
 }

@@ -42,29 +42,29 @@ const Carousel3d = ({ children }: Carousel3dProps) => {
 	};
 
 	return (
-		<div className="w-full h-full">
-			<section className="relative w-full h-full py-10">
-				{React.Children.map(arrayChildren, (child: React.ReactNode, index) => (
-					<div
-						key={`card-${index + 1}`}
-						className={`absolute left-0 right-0 h-full sm:w-3/4 md:w-2/3 lg:w-1/2 m-auto flex content-center justify-center transition ${
-							(labelIndex === 1 && index + 1 === arrayChildren.length) || (labelIndex > 1 && labelIndex - 2 === index)
-								? "opacity-50 blur-md translate-x-20 text-transparent grayscale"
-								: labelIndex === index + 1
-								? "drop-shadow-md translate-x-0 translate-y-0 z-10"
-								: "opacity-50 blur-md -translate-x-20 text-transparent grayscale"
-						}`}>
-						{child}
+		<section className="absolute flex justify-center content-center h-screen w-full overflow-hidden">
+			{React.Children.map(arrayChildren, (child: React.ReactNode, index) => (
+				<div
+					key={`card-${index + 1}`}
+					className={`absolute left-0 right-0 h-full w-3/4 md:w-2/3 lg:w-1/2 m-auto flex flex-col content-center justify-center transition ${
+						(labelIndex === 1 && index + 1 === arrayChildren.length) || (labelIndex > 1 && labelIndex - 2 === index)
+							? "opacity-50 blur-md translate-x-20 text-transparent grayscale"
+							: labelIndex === index + 1
+							? "drop-shadow-md translate-x-0 translate-y-0 z-10"
+							: "opacity-50 blur-md -translate-x-20 text-transparent grayscale"
+					}`}>
+					{child}
+					<div className="w-full flex justify-between md:justify-around pt-5">
+						<button className="active:-translate-x-1 transition" onClick={handlePrev}>
+							<ChevronLeft />
+						</button>
+						<button className="active:translate-x-1 transition" onClick={handleNext}>
+							<ChevronRight />
+						</button>
 					</div>
-				))}
-				<button className="absolute top-1/2 left-10 sm:left-48 active:-translate-x-1 transition" onClick={handlePrev}>
-					<ChevronLeft />
-				</button>
-				<button className="absolute top-1/2 right-10 sm:right-48 active:translate-x-1 transition" onClick={handleNext}>
-					<ChevronRight />
-				</button>
-			</section>
-		</div>
+				</div>
+			))}
+		</section>
 	);
 };
 

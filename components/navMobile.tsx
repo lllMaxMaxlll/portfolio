@@ -29,7 +29,7 @@ function NavMobile({ pathname }: { pathname: string }) {
 			</div>
 			<nav
 				className={`absolute ${
-					isOpen ? "translate-y-20" : "-translate-y-32 opacity-0"
+					isOpen ? "translate-y-20" : "-translate-y-56 opacity-0"
 				} bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition`}>
 				<ul className="flex flex-col gap-6 text-sm">
 					{navigation.map((link) => {
