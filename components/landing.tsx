@@ -23,8 +23,9 @@ function Landing() {
 			<div className="flex flex-col justify-center select-none">
 				<p className="mb-2 ps-1 text-start dark:text-neutral-500 text-base md:text-xl">I AM</p>
 				<h1
+					suppressHydrationWarning
 					className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center"
-					style={{ filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px  ${isDark ? "10px #000000" : "5px #737373"})` }}>
+					style={{ filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px 10px ${isDark ? "#000000" : "#737373"})` }}>
 					MAX HERR
 				</h1>
 				<div className="block text-end mt-2 dark:text-neutral-500 text-base md:text-xl">
