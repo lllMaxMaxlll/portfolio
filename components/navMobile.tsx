@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navigation } from "./header";
+import { Switcher } from "../components";
 
 function NavMobile({ pathname }: { pathname: string }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -48,6 +49,9 @@ function NavMobile({ pathname }: { pathname: string }) {
 						);
 					})}
 				</ul>
+				<div className="absolute right-3 bottom-9">
+					<Switcher />
+				</div>
 			</nav>
 		</>
 	);
