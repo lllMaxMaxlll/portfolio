@@ -4,3 +4,4 @@ export { default as Landing } from "./landing";
 export { default as NavMobile } from "./navMobile";
 export { default as CardCarousel } from "./cardCarousel";
 export { default as Carousel3d } from "./carousel3d";
+export { default as Switcher } from "./switcher";

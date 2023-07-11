@@ -3,10 +3,13 @@
 import { useMousePosition } from "../utils";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
+import { useTheme } from "next-themes";
 
 function Landing() {
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const mousePosition = useMousePosition();
+
+	const isDark = useTheme().resolvedTheme === "dark";
 
 	useEffect(() => {
 		setPosition(mousePosition);
@@ -15,16 +18,16 @@ function Landing() {
 	return (
 		<section className="flex justify-center content-center absolute h-screen w-screen">
 			<div
-				className="hidden md:block absolute -top-32 -left-40 -z-10 rounded-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-neutral-700 via-neutral-800 to-transparent blur-3xl"
+				className="hidden md:block absolute -top-32 -left-40 -z-10 rounded-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]  dark:from-neutral-700  dark:via-neutral-800 to-transparent blur-3xl"
 				style={{ transform: `translate(${position.x * 0.1}px, ${position.y * 0.1}px)`, width: "50%", height: "30rem" }}></div>
 			<div className="flex flex-col justify-center select-none">
-				<p className="mb-2 ps-2 text-start text-neutral-500 text-base md:text-xl">I AM</p>
+				<p className="mb-2 ps-2 text-start dark:text-neutral-500 text-base md:text-xl">I AM</p>
 				<h1
 					className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center"
-					style={{ filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px 10px #000000)` }}>
+					style={{ filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px  ${isDark ? "10px #000000" : "5px #737373"})` }}>
 					MAX HERR
 				</h1>
-				<div className="block text-end mt-2 text-neutral-500 text-base md:text-xl">
+				<div className="block text-end mt-2 dark:text-neutral-500 text-base md:text-xl">
 					<Typewriter
 						options={{
 							strings: ["A FRONT END DEVELOPER", "A BACK END DEVELOPER", "A PHOTOGRAPHER"],

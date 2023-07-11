@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-import React from "react";
-import NavMobile from "./navMobile";
+import { NavMobile, Switcher } from "../components";
 
 export const navigation = [
 	{ name: "HOME", href: "/" },
@@ -34,13 +32,16 @@ function Header() {
 											<Link
 												href={link.href}
 												className={`${
-													isActive ? "text-neutral-200 cursor-default" : "text-neutral-500"
-												} transition hover:text-neutral-300`}>
+													isActive ? "font-semibold cursor-default" : "text-neutral-700 dark:text-neutral-500"
+												} transition dark:hover:text-neutral-300 hover:text-neutral-600`}>
 												{link.name}
 											</Link>
 										</li>
 									);
 								})}
+								<li>
+									<Switcher />
+								</li>
 							</ul>
 						</nav>
 					</div>
