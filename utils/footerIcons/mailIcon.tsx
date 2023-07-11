@@ -1,4 +1,4 @@
-const Mail = ({ size = 28 }) => (
+const Mail = ({ size = 24 }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
