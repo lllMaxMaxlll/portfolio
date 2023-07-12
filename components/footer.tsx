@@ -7,27 +7,31 @@ function Footer() {
 				<div className="flex justify-center items-center">
 					<ul className="flex items-center justify-center gap-3">
 						<a
-							className="stroke-neutral-900 dark:stroke-neutral-500 transition hover:stroke-red-600/75"
+							className="stroke-neutral-900 dark:stroke-neutral-200 transition hover:stroke-red-600/75 dark:hover:stroke-red-600/75"
 							href="mailto:max.herr.88@gmail.com"
-							target="_blank">
+							target="_blank"
+							role="button">
 							<Mail />
 						</a>
 						<a
-							className="fill-neutral-900 dark:fill-neutral-500 transition hover:fill-sky-500/75"
+							className="fill-neutral-900 dark:fill-neutral-200 transition hover:fill-sky-500/75 dark:hover:fill-sky-500/75"
 							href="https://www.linkedin.com/in/maximiliano-herr-720634227/"
-							target="_blank">
+							target="_blank"
+							role="button">
 							<Linkedin />
 						</a>
 						<a
-							className="fill-neutral-900 dark:fill-neutral-500 transition hover:fill-neutral-800/75"
+							className="fill-neutral-900 dark:fill-neutral-200 transition hover:opacity-75 dark:hover:opacity-75"
 							href="https://github.com/lllMaxMaxlll"
-							target="_blank">
+							target="_blank"
+							role="button">
 							<Github />
 						</a>
 						<a
-							className="fill-neutral-900 dark:fill-neutral-500 transition hover:fill-rose-500/75"
+							className="fill-neutral-900 dark:fill-neutral-200 transition hover:fill-rose-500/75 dark:hover:fill-rose-500/75"
 							href="https://www.instagram.com/_max_herr_/"
-							target="_blank">
+							target="_blank"
+							role="button">
 							<Instagram />
 						</a>
 					</ul>
