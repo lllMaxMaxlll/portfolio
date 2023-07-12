@@ -5,7 +5,7 @@ export default function Projects() {
 	return (
 		<Carousel3d>
 			{projects.map((p, index) => (
-				<CardCarousel key={index} image={p.image} title={p.title} description={p.description} />
+				<CardCarousel key={index} image={p.image} title={p.title} description={p.description} demo={p.demo} github={p.github} />
 			))}
 		</Carousel3d>
 	);

@@ -46,18 +46,19 @@ const Carousel3d = ({ children }: Carousel3dProps) => {
 			{React.Children.map(arrayChildren, (child: React.ReactNode, index) => (
 				<div
 					key={`card-${index + 1}`}
-					className={`absolute left-0 right-0 h-full w-3/4 md:w-2/3 lg:w-1/2 m-auto flex flex-col content-center justify-center transition ${
+					className={`absolute left-0 right-0 h-full w-3/4 md:w-2/3 lg:w-1/2 m-auto flex flex-col content-center justify-center transition group ${
 						(labelIndex === 1 && index + 1 === arrayChildren.length) || (labelIndex > 1 && labelIndex - 2 === index)
-							? "opacity-50 blur-md translate-x-20 text-transparent grayscale"
+							? "opacity-50 blur-md translate-x-20 text-transparent grayscale pointer-events-none"
 							: labelIndex === index + 1
 							? "drop-shadow-md translate-x-0 translate-y-0 z-10"
-							: "opacity-50 blur-md -translate-x-20 text-transparent grayscale"
+							: "opacity-50 blur-md -translate-x-20 text-transparent grayscale pointer-events-none"
 					}`}>
 					{child}
 					<div className="w-full flex justify-between md:justify-around pt-5">
 						<button className="active:-translate-x-1 transition" onClick={handlePrev}>
 							<ChevronLeft />
 						</button>
+
 						<button className="active:translate-x-1 transition" onClick={handleNext}>
 							<ChevronRight />
 						</button>
