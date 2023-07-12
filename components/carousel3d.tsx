@@ -54,17 +54,17 @@ const Carousel3d = ({ children }: Carousel3dProps) => {
 							: "opacity-50 blur-md -translate-x-20 text-transparent grayscale pointer-events-none"
 					}`}>
 					{child}
-					<div className="w-full flex justify-between md:justify-around pt-5">
-						<button className="active:-translate-x-1 transition" onClick={handlePrev}>
-							<ChevronLeft />
-						</button>
-
-						<button className="active:translate-x-1 transition" onClick={handleNext}>
-							<ChevronRight />
-						</button>
-					</div>
 				</div>
 			))}
+			<div className="h-auto mx-auto absolute bottom-24 flex justify-between md:justify-around w-3/4 md:w-1/2 z-10">
+				<button className="active:-translate-x-1 transition" onClick={handlePrev}>
+					<ChevronLeft />
+				</button>
+
+				<button className="active:translate-x-1 transition" onClick={handleNext}>
+					<ChevronRight />
+				</button>
+			</div>
 		</section>
 	);
 };

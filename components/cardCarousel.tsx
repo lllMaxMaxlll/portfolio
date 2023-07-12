@@ -2,13 +2,16 @@ import { Github, LinkIcon } from "@/utils";
 import { ProjectData } from "@/utils/projects";
 import Image from "next/image";
 
-function CardCarousel({ image, title, description, github, demo }: ProjectData) {
+function CardCarousel({ image, title, description, technologies, github, demo }: ProjectData) {
 	return (
 		<div className="relative flex flex-col text-center justify-center items-center group">
-			<Image src={image} alt={title} width="700" height="300" />
+			<Image src={image} alt={title} width="500" height="200" className="w-auto h-auto" />
 			<h2 className="text-xl sm:text-3xl font-bold pt-5">{title}</h2>
 			<p className="pt-2 font-thin">{description}</p>
-			<div className="absolute -bottom-16 sm:-bottom-18 flex p-3 md:opacity-0 transition sm:group-hover:-translate-y-1 group-hover:opacity-100 ">
+			<p className="pt-2 text-sm md:text-base font-semibold md:opacity-0 transition md:group-hover:opacity-100">
+				{technologies.join(" - ")}
+			</p>
+			<div className="z-10 flex py-5 md:opacity-0 transition md:group-hover:opacity-100 md:translate-y-2 md:group-hover:translate-y-0">
 				{demo && (
 					<a href={demo} className="px-3 hover:opacity-75 transition" target="_blank" role="button">
 						<LinkIcon />

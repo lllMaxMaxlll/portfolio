@@ -1,4 +1,4 @@
-const Link = ({ size = 28, color = "currentColor" }) => (
+const Link = ({ size = 24, color = "currentColor" }) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		width={size}
