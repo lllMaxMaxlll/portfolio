@@ -14,9 +14,9 @@ function Header() {
 	const pathname = usePathname();
 
 	return (
-		<header className="fixed w-screen z-50">
-			<div className="mx-auto max-w-screen-xl px-5 sm:px-6 lg:px-16 py-2">
-				<div className="flex h-16 items-center justify-between">
+		<header className="relative top-0 left-0 right-0 h-[10vh] w-full">
+			<div className="w-full mx-auto px-5 sm:px-6 lg:px-16">
+				<div className="flex items-center justify-between py-5">
 					<div className="text-xl md:text-2xl font-bold transition hover:text-neutral-300/75">
 						<Link href="/">{"</>"}</Link>
 					</div>

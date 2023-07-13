@@ -6,20 +6,6 @@ import Image from "next/image";
 
 const Carousel3d = () => {
 	const [labelIndex, setLabelIndex] = useState(1);
-	const savedCallback = useRef();
-
-	const callback = () => {
-		if (labelIndex === projects?.length) {
-			setLabelIndex(1);
-		} else {
-			setLabelIndex(labelIndex + 1);
-		}
-	};
-
-	useEffect(() => {
-		// @ts-ignore
-		savedCallback.current = callback;
-	});
 
 	const handleNext = () => {
 		if (labelIndex === projects?.length) {
@@ -38,7 +24,7 @@ const Carousel3d = () => {
 	};
 
 	return (
-		<section className="absolute left-0 right-0 top-0 bottom-0 flex justify-center content-center">
+		<section className="relative h-[80vh]">
 			{projects.map((p, index) => {
 				const isActive = labelIndex === index + 1;
 				const isLeft = (labelIndex === 1 && index + 1 === projects.length) || (labelIndex > 1 && labelIndex - 2 === index);
@@ -46,32 +32,32 @@ const Carousel3d = () => {
 				return (
 					<div
 						key={`card-${index + 1}`}
-						className={`absolute left-0 right-0 top-28 w-3/4 lg:w-2/3 m-auto flex flex-col content-center transition text-center ${
-							isActive && "group z-20"
+						className={`absolute left-0 right-0 top-0 w-3/4 lg:w-2/3 h-full mx-auto py-5 flex flex-col transition text-center ${
+							isActive && "group z-10"
 						}`}>
-						{/* Image project */}
-						<div className="flex justify-center content-center">
+						<div className="flex justify-center h-auto">
 							{isActive && (
-								<button className="active:-translate-x-1 transition " onClick={handlePrev}>
+								<button className="p-2 active:-translate-x-1 transition" onClick={handlePrev}>
 									<ChevronLeft />
 								</button>
 							)}
+							{/* Image project */}
 							<Image
 								src={p.image}
 								alt={p.title}
-								width="500"
-								height="200"
+								width="854"
+								height="480"
 								className={`w-full md:w-3/4 lg:w-2/3 h-auto mx-auto transition
                 ${
 									isActive
 										? "drop-shadow-md translate-x-0 z-10"
 										: isLeft
-										? "hidden md:block opacity-5 blur-sm -z-10 translate-x-20 grayscale pointer-events-none text-transparent"
+										? "hidden md:block opacity-5 blur-sm -z-10 translate-x-20 grayscale pointer-events-none"
 										: "hidden md:block opacity-5 blur-sm -translate-x-20 grayscale pointer-events-none -z-10 "
 								}`}
 							/>
 							{isActive && (
-								<button className="active:translate-x-1 transition" onClick={handleNext}>
+								<button className="active:translate-x-1 transition p-2 " onClick={handleNext}>
 									<ChevronRight />
 								</button>
 							)}

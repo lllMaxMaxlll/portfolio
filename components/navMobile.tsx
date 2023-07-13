@@ -10,7 +10,7 @@ function NavMobile({ pathname }: { pathname: string }) {
 
 	return (
 		<>
-			<div className="absolute inset-y-0 right-4 flex items-center md:hidden z-50">
+			<div className="absolute inset-y-0 right-4 flex items-center md:hidden">
 				<button
 					type="button"
 					className="inline-flex items-center justify-center rounded-md p-2 hover:text-neutral-400 focus:outline-none"
@@ -31,7 +31,7 @@ function NavMobile({ pathname }: { pathname: string }) {
 			<nav
 				className={`absolute ${
 					isOpen ? "translate-y-20" : "-translate-y-56 opacity-0"
-				} bg-neutral-200 dark:bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition z-10`}>
+				} bg-neutral-200 dark:bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition z-20`}>
 				<ul className="flex flex-col gap-6 text-sm">
 					{navigation.map((link) => {
 						const isActive = pathname === link.href;

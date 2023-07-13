@@ -21,7 +21,7 @@ export const projects: ProjectData[] = [
 		image: "/img/PetsAmerica.jpg",
 		title: "Pets America",
 		description:
-			"E-commerce website that offers a wide range of products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email and password. It also has light/dark mode",
+			"Part of the front-end team, building an e-commerce that offers products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email and password. It also has light/dark mode.",
 		github: "https://github.com/erikfille/PF-Henry.git",
 		technologies: ["React", "Zustand", "Bootstrap", "Node.js", "Hapi", "Nodemailer", "Mongoose", "Mongodb", "Paypal"],
 	},
