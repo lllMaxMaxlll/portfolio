@@ -31,7 +31,7 @@ function Landing() {
 				<div className="block text-end mt-2 dark:text-neutral-500 text-base md:text-xl">
 					<Typewriter
 						options={{
-							strings: ["A FRONT END DEVELOPER", "A BACK END DEVELOPER", "A PHOTOGRAPHER"],
+							strings: ["A FULL STACK DEVELOPER", "A LOVER OF SIMPLE THINGS", "A SOLUTION TO PROBLEMS", "A PHOTOGRAPHER"],
 							autoStart: true,
 							loop: true,
 						}}
