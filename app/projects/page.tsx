@@ -1,20 +1,11 @@
-import { Carousel3d, CardCarousel } from "../../components";
-import { projects } from "../../utils";
+import { Carousel3d } from "../../components";
+
+export const metadata = {
+	title: "Max Herr Projects",
+	description: "Projects of Max Herr",
+	keywords: "Projects",
+};
 
 export default function Projects() {
-	return (
-		<Carousel3d>
-			{projects.map((p, index) => (
-				<CardCarousel
-					key={index}
-					image={p.image}
-					title={p.title}
-					description={p.description}
-					demo={p.demo}
-					github={p.github}
-					technologies={p.technologies}
-				/>
-			))}
-		</Carousel3d>
-	);
+	return <Carousel3d />;
 }
