@@ -2,12 +2,12 @@ import { Instagram, Linkedin, Github, Mail } from "../utils";
 
 function Footer() {
 	return (
-		<footer className="relative bottom-0 left-0 right-0 w-screen h-[10vh] flex">
+		<footer className="w-screen h-[10vh] flex">
 			<div className="mx-auto px-5 sm:px-6 lg:px-16 flex content-center justify-center">
 				<div className="flex justify-center items-center ">
 					<ul className="flex items-center justify-center gap-x-3">
 						<a
-							className="stroke-neutral-900 dark:stroke-neutral-200 transition hover:stroke-red-600/75 dark:hover:stroke-red-600/75"
+							className="fill-neutral-900 dark:fill-neutral-200 transition hover:fill-red-600/75 dark:hover:fill-red-600/75"
 							href="mailto:max.herr.88@gmail.com"
 							target="_blank"
 							role="button">

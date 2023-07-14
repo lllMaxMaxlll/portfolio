@@ -32,7 +32,6 @@ export const projects: ProjectData[] = [
 			"Showcases information about video games sourced from the https://rawg.io/ API. It allows users to explore a collection of games while also enabling them to create and save their own personalized game lists in the database.",
 		github: "https://github.com/lllMaxMaxlll/Pixelverse.git",
 		technologies: ["React", "Redux", "Node.js", "Express.js", "Sequelize", "PostgreSQL"],
-		demo: "https://pixelverse-max-app.netlify.app/",
 	},
 	{
 		image: "/img/RickAndMorty.jpg",
