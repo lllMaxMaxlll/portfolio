@@ -47,7 +47,7 @@ const Carousel3d = () => {
 								alt={p.title}
 								width="854"
 								height="480"
-								className={`w-full md:w-3/4 lg:w-2/3 h-auto mx-auto transition
+								className={`w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-auto mx-auto transition
                 ${
 									isActive
 										? "drop-shadow-md translate-x-0 z-10"

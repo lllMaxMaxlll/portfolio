@@ -16,11 +16,11 @@ export default function About() {
 					appreciating the beauty in simplicity. During my free time, you can find me behind the lens, spending quality time with my son and
 					cat, or enjoying a good video game.
 				</p>
+				<br />
 				<p className="hidden sm:block">
 					Currently, I specialize in the following technologies, dedicating myself to mastering them while remaining open to learning new
 					ones:
 				</p>
-
 				<div className="grid grid-cols-6 md:grid-cols-12 gap-6 mx-auto py-5">
 					{aboutIcons.map((icon, i) => (
 						<svg
