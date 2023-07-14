@@ -7,3 +7,4 @@ export { default as Mail } from "./footerIcons/mailIcon";
 export { default as LinkIcon } from "./footerIcons/linkIcon";
 export { default as useMousePosition } from "./mouse";
 export { projects } from "./projects";
+export { aboutIcons } from "./aboutIcons/aboutIcons";
