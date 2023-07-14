@@ -5,7 +5,7 @@ import { Providers } from "./providers";
 const rubik = Rubik({ subsets: ["latin"] });
 
 export const metadata = {
-	title: "Max Herr Portfolio",
+	title: "Max Herr | Home",
 	description: "Max Herr Full Stack Web Developer",
 	keywords: "Max Herr, Portfolio, Web Developer, Full Stack",
 };
