@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Github, LinkIcon, projects } from "@/utils";
 import Image from "next/image";
 
