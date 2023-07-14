@@ -47,6 +47,8 @@ const Carousel3d = () => {
 								alt={p.title}
 								width="854"
 								height="480"
+								placeholder="blur"
+								blurDataURL={p.imageBlur}
 								className={`w-full md:w-3/4 lg:w-2/3 xl:w-1/2 h-auto mx-auto transition
                 ${
 									isActive
