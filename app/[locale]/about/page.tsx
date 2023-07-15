@@ -1,4 +1,5 @@
 import { aboutIcons } from "@/utils";
+import { useTranslations } from "next-intl";
 
 export const metadata = {
 	title: "Max Herr | About",
@@ -6,21 +7,15 @@ export const metadata = {
 };
 
 export default function About() {
+	const t = useTranslations("About");
+
 	return (
 		<section className="flex flex-col md:flex-row justify-center content-center h-[80vh] gap-5 mx-auto w-3/4 md:max-w-3xl">
 			<div className="flex flex-col justify-center content-center text-center">
-				<h2 className="text-2xl sm:text-4xl font-bold text-center py-5">About Me</h2>
-				<p>
-					Hey, I&apos;m Maximiliano Herr, a coffee-addicted web developer based in Argentina, with a particular passion for creating
-					exceptional digital experiences. Beyond my love for technology, I find joy in capturing special moments through photography and
-					appreciating the beauty in simplicity. During my free time, you can find me behind the lens, spending quality time with my son and
-					cat, or enjoying a good video game.
-				</p>
+				<h2 className="text-2xl sm:text-4xl font-bold text-center py-5">{t("title")}</h2>
+				<p>{t("firstP")}</p>
 				<br />
-				<p className="hidden sm:block">
-					Currently, I specialize in the following technologies, dedicating myself to mastering them while remaining open to learning new
-					ones:
-				</p>
+				<p className="hidden sm:block">{t("secondP")}</p>
 				<div className="grid grid-cols-6 md:grid-cols-12 gap-6 mx-auto py-5">
 					{aboutIcons.map((icon, i) => (
 						<svg

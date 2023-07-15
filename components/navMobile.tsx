@@ -2,10 +2,18 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { navigation } from "./header";
-import { Switcher } from "../components";
+import { SwitcherLocale, SwitcherTheme } from "../components";
 
-function NavMobile({ pathname }: { pathname: string }) {
+function NavMobile({
+	pathname,
+	navigation,
+}: {
+	pathname: string;
+	navigation: {
+		name: string;
+		href: string;
+	}[];
+}) {
 	const [isOpen, setIsOpen] = useState(false);
 
 	return (
@@ -29,7 +37,7 @@ function NavMobile({ pathname }: { pathname: string }) {
 				</button>
 			</div>
 			<nav
-				className={`absolute ${
+				className={`absolute block md:hidden ${
 					isOpen ? "translate-y-20" : "-translate-y-56 opacity-0"
 				} bg-neutral-200 dark:bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition z-20`}>
 				<ul className="flex flex-col gap-6 text-sm">
@@ -49,8 +57,11 @@ function NavMobile({ pathname }: { pathname: string }) {
 						);
 					})}
 				</ul>
+				<div className="absolute right-3 top-9">
+					<SwitcherLocale />
+				</div>
 				<div className="absolute right-3 bottom-9">
-					<Switcher />
+					<SwitcherTheme />
 				</div>
 			</nav>
 		</>

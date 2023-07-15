@@ -2,7 +2,6 @@ export type ProjectData = {
 	image: string;
 	imageBlur: string;
 	title: string;
-	description: string;
 	github?: string;
 	demo?: string;
 	technologies: string[];
@@ -14,8 +13,6 @@ export const projects: ProjectData[] = [
 		imageBlur:
 			"data:image/webp;base64,UklGRnICAABXRUJQVlA4WAoAAAAgAAAAgQAASAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgghAAAAJAGAJ0BKoIASQA+7XayVSmnJCMgylkwHYlpANVAApt6qB3BX4f7LGdkP9hhi8Kq51Y5+rjy8y+w5mIx6UAA/u4SlmIzyC5ec691RBp9HszEQY0+qh1VJiLkeRDZQZhg0WiuZqhB45iGDD2Io9BNBXaF6Ifja7ADlVDRmXSG4djdUkQAAA==",
 		title: "CH Servicios Juridicos",
-		description:
-			"Landing page showing information about a legal services firm. It incorporates a contact form powered by EmailJS. It also has light/dark mode.",
 		github: "https://github.com/lllMaxMaxlll/herrera-portfolio.git",
 		demo: "https://chserviciosjuridicos.vercel.app/",
 		technologies: ["React", "Next.js", "Typescript", "Tailwind", "EmailJS", "PostgreSQL"],
@@ -25,8 +22,6 @@ export const projects: ProjectData[] = [
 		imageBlur:
 			"data:image/webp;base64,UklGRsYCAABXRUJQVlA4WAoAAAAgAAAAgQAASAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDgg2AAAAHAIAJ0BKoIASQA+7WqrUDOrLaMqtmxCcB2JZwDNDAwv7tk8p8eCjz05mbSPbmxKClFUUsIUqJnJwclf3sjl/+F3HlhatHqbr+pme4AA/u4J8gGJkyDfnTdMezIeCIL4+zpMHHcqWlPfXglQ/Mh2h+ClJUd/jbn+SwWPd641kq9r7bJZcsKrr8+O8iATConcoVlTk8QXI6T11+Nb3uac79w/6maTt+W9LbwiXFw5THmyFUFXDapzSUI1SIMYCpYoyOOrX2V7jlCuue9Y5QwKWJJE1glSmAAAAA==",
 		title: "Pets America",
-		description:
-			"Part of the front-end team, building an e-commerce that offers products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email and password. It also has light/dark mode.",
 		github: "https://github.com/erikfille/PF-Henry.git",
 		technologies: ["React", "Zustand", "Bootstrap", "Node.js", "Hapi", "Nodemailer", "Mongoose", "Mongodb", "Paypal"],
 	},
@@ -35,8 +30,6 @@ export const projects: ProjectData[] = [
 		imageBlur:
 			"data:image/webp;base64,UklGRroCAABXRUJQVlA4WAoAAAAgAAAAgQAASAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggzAAAADAIAJ0BKoIASQA+7W6tUqmmI6OnNNr5MB2JZwb454lP9x7ANVa+Ge7Dhblw5TInMPtz3zfCBabLWKo4qBYVFqGmZlY+l4C+8nwAAP7f2ZM9zV55/nV2bFHdCAH5Gma+dQlcXFiHk7XZVaImk95/KNV0GeP6fOER83q28pw/t+LYnMXYFZ/tERiIkGcActd3V6y1ZvFKJCt+nTGlGLOOoIlOV6dmkN7897QpQi21cUrHeCKIkOr8+jNY7D6+O4LIZqlQVlUe0mJ6wAAAAA==",
 		title: "PixelVerse",
-		description:
-			"Showcases information about video games sourced from the https://rawg.io/ API. It allows users to explore a collection of games while also enabling them to create and save their own personalized game lists in the database.",
 		github: "https://github.com/lllMaxMaxlll/Pixelverse.git",
 		technologies: ["React", "Redux", "Node.js", "Express.js", "Sequelize", "PostgreSQL"],
 	},
@@ -44,9 +37,7 @@ export const projects: ProjectData[] = [
 		image: "/img/RickAndMorty.jpg",
 		imageBlur:
 			"data:image/webp;base64,UklGRqQCAABXRUJQVlA4WAoAAAAgAAAAgQAASAAASUNDUMgBAAAAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADZWUDggtgAAAJAHAJ0BKoIASQA+7WisUboqpKKsEtrbQB2JaQb4HIQg5lvYoPWCyM0AXC5pgAk9XS8hBxGoYxOcrLtvzus4swwR7LkBWAD+vkzMDmsQIS8ZU2rVQLVTnbbbavU5cxdZN3tx2wyFCpMny8QcKM8/UcSSmynjwHAAfuj1WTrXr01dw94nRDmNHFT1SPgwabM+o4n2VsZF/yfKsKY68U8bH79IETnfwstkYUMtW3+n/10IcGDYPgAA",
-		title: "Rick And Morty App",
-		description:
-			"Dynamic app that showing cards from the API https://rickandmortyapi.com/. Manage and store retrieved information using Redux state.It provides filtering, sorting and searching from API.",
+		title: "Rick And Morty",
 		github: "https://github.com/lllMaxMaxlll/Pixelverse.git",
 		demo: "https://rick-and-morty-max-app.netlify.app/",
 		technologies: ["React", "Redux"],

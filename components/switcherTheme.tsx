@@ -3,13 +3,14 @@
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 
-function Switcher() {
+function SwitcherTheme() {
 	const [mounted, setMounted] = useState(false);
 	const { theme, setTheme } = useTheme();
 	const isLight = theme === "light" ? "dark" : "light";
 
 	useEffect(() => {
 		if (!mounted) setMounted(true);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	function switchTheme() {
@@ -51,4 +52,4 @@ function Switcher() {
 	);
 }
 
-export default Switcher;
+export default SwitcherTheme;
