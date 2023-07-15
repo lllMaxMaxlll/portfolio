@@ -3,8 +3,10 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Github, LinkIcon, projects } from "@/utils";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 
 const Carousel3d = () => {
+	const t = useTranslations("Projects");
 	const [labelIndex, setLabelIndex] = useState(1);
 
 	const handleNext = () => {
@@ -28,6 +30,9 @@ const Carousel3d = () => {
 			{projects.map((p, index) => {
 				const isActive = labelIndex === index + 1;
 				const isLeft = (labelIndex === 1 && index + 1 === projects.length) || (labelIndex > 1 && labelIndex - 2 === index);
+				const formattedTitle = p.title.split(" ").join("");
+				//@ts-ignore
+				const projectDescription = t(formattedTitle);
 
 				return (
 					<div
@@ -68,7 +73,7 @@ const Carousel3d = () => {
 						{isActive && (
 							<>
 								<h2 className="text-xl sm:text-3xl font-bold pt-5">{p.title}</h2>
-								<p className="pt-2 font-thin">{p.description}</p>
+								<p className="pt-2 font-thin">{projectDescription}</p>
 								<p className="pt-2 text-sm md:text-base font-semibold md:opacity-0 transition md:group-hover:opacity-100">
 									{p.technologies.join(" - ")}
 								</p>

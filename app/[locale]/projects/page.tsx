@@ -1,4 +1,4 @@
-import { Carousel3d } from "../../components";
+import { Carousel3d } from "@/components";
 
 export const metadata = {
 	title: "Max Herr | Projects",

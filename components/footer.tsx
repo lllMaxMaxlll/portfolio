@@ -2,7 +2,7 @@ import { Instagram, Linkedin, Github, Mail } from "../utils";
 
 function Footer() {
 	return (
-		<footer className="w-screen h-[10vh] flex">
+		<footer className="absolute bottom-0 left-0 right-0 w-screen h-[10vh] flex">
 			<div className="mx-auto px-5 sm:px-6 lg:px-16 flex content-center justify-center">
 				<div className="flex justify-center items-center ">
 					<ul className="flex items-center justify-center gap-x-3">

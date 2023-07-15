@@ -2,16 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NavMobile, Switcher } from "../components";
-
-export const navigation = [
-	{ name: "HOME", href: "/" },
-	{ name: "PROJECTS", href: "/projects" },
-	{ name: "ABOUT", href: "/about" },
-];
+import { NavMobile, SwitcherTheme, SwitcherLocale } from "../components";
+import { useTranslations, useLocale } from "next-intl";
 
 function Header() {
 	const pathname = usePathname();
+	const t = useTranslations("Navbar");
+
+	const navigation = [
+		{ name: t("home"), href: "/" },
+		{ name: t("projects"), href: "/projects" },
+		{ name: t("about"), href: "/about" },
+	];
 
 	return (
 		<header className="relative top-0 left-0 right-0 h-[10vh] w-full">
@@ -40,12 +42,15 @@ function Header() {
 									);
 								})}
 								<li>
-									<Switcher />
+									<SwitcherTheme />
+								</li>
+								<li>
+									<SwitcherLocale />
 								</li>
 							</ul>
 						</nav>
 					</div>
-					<NavMobile pathname={pathname} />
+					<NavMobile pathname={pathname} navigation={navigation} />
 				</div>
 			</div>
 		</header>

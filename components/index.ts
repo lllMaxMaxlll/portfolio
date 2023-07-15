@@ -3,4 +3,5 @@ export { default as Header } from "./header";
 export { default as Landing } from "./landing";
 export { default as NavMobile } from "./navMobile";
 export { default as Carousel3d } from "./carousel3d";
-export { default as Switcher } from "./switcher";
+export { default as SwitcherTheme } from "./switcherTheme";
+export { default as SwitcherLocale } from "./switcherLocale";

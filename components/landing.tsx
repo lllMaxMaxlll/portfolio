@@ -4,8 +4,11 @@ import { useMousePosition } from "../utils";
 import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import { useTheme } from "next-themes";
+import { useTranslations } from "next-intl";
 
 function Landing() {
+	const t = useTranslations("Homepage");
+
 	const [position, setPosition] = useState({ x: 0, y: 0 });
 	const mousePosition = useMousePosition();
 
@@ -21,7 +24,7 @@ function Landing() {
 				className="hidden md:block absolute -top-32 -left-40 -z-10 rounded-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]  dark:from-neutral-700  dark:via-neutral-800 to-transparent blur-3xl"
 				style={{ transform: `translate(${position.x * 0.1}px, ${position.y * 0.1}px)`, width: "50%", height: "30rem" }}></div>
 			<div className="flex flex-col justify-center select-none">
-				<p className="mb-2 ps-1 text-start dark:text-neutral-500 text-base md:text-xl">I AM</p>
+				<p className="mb-2 ps-1 text-start dark:text-neutral-500 text-base md:text-xl">{t("subtitleTop")}</p>
 				<h1
 					suppressHydrationWarning
 					className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center"
@@ -35,7 +38,7 @@ function Landing() {
 				<div className="block text-end mt-2 dark:text-neutral-500 text-base md:text-xl">
 					<Typewriter
 						options={{
-							strings: ["A FULL STACK DEVELOPER", "A PROBLEM SOLVER", "A LOVER OF SIMPLE THINGS", "A PHOTOGRAPHER"],
+							strings: t("typewriter").split(","),
 							autoStart: true,
 							loop: true,
 						}}

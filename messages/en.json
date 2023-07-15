@@ -1,0 +1,30 @@
+{
+	"Navbar": {
+		"home": "HOME",
+		"projects": "PROJECTS",
+		"about": "ABOUT"
+	},
+
+	"Homepage": {
+		"subtitleTop": "I AM",
+		"typewriter": "A FULL STACK DEVELOPER,A PROBLEM SOLVER,A LOVER OF SIMPLE THINGS,A PHOTOGRAPHER"
+	},
+
+	"Projects": {
+		"CHServiciosJuridicos": "Landing page showing information about a legal services firm. It incorporates a contact form powered by EmailJS. It also has light/dark mode.",
+		"PetsAmerica": "Part of the front-end team, building an e-commerce that offers products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email. It also has light/dark mode.",
+		"PixelVerse": "Showcases information about video games sourced from the https://rawg.io/ API. It allows users to explore a collection of games while also enabling them to create and save their own personalized game lists in the database.",
+		"RickAndMorty": "Website that showing cards from the API https://rickandmortyapi.com/. It manages and store information using Redux state. It provides filtering, sorting and searching from API."
+	},
+
+	"About": {
+		"title": "About Me",
+		"firstP": "Hey, I'm Maximiliano Herr, a coffee-addicted web developer based in Argentina, with a particular passion for creating exceptional digital experiences. Beyond my love for technology, I find joy in capturing special moments through photography and appreciating the beauty in simplicity. During my free time, you can find me behind the lens, spending quality time with my son and cat, or enjoying a good video game.",
+		"secondP": "Currently, I specialize in the following technologies, dedicating myself to mastering them while remaining open to learning new ones:"
+	},
+
+	"NotFound": {
+		"title": "Page not found",
+		"button": "Go Home"
+	}
+}
