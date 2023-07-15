@@ -6,22 +6,17 @@ function SwitcherLocale() {
 	const isEng = locale === "en";
 
 	return (
-		<div className="flex flex-col md:flex-row px-4 md:px-0">
-			<Link
-				href="/"
-				locale="en"
-				className={`px-1 ${isEng ? "text-neutral-400 dark:text-neutral-600 pointer-events-none" : ""}`}
-				title="Switch to English">
-				EN
-			</Link>
-			<Link
-				href="/"
-				locale="es"
-				className={`px-1 ${!isEng ? "text-neutral-400 dark:text-neutral-600 pointer-events-none" : ""}`}
-				title="Cambiar a Español">
-				ES
-			</Link>
-		</div>
+		<button className="flex flex-col md:flex-row px-4 md:px-0">
+			{isEng ? (
+				<Link href="/" locale="es" className="px-2 hover:text-neutral-400" title="Cambiar a Español">
+					ES
+				</Link>
+			) : (
+				<Link href="/" locale="en" className="px-2 md:px-0 hover:text-neutral-400 " title="Switch to English">
+					EN
+				</Link>
+			)}
+		</button>
 	);
 }
 
