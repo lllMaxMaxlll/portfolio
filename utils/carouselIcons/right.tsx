@@ -9,7 +9,6 @@ const ChevronRight = ({ size = 28, color = "currentColor" }) => (
 		strokeWidth="2"
 		strokeLinecap="square"
 		strokeLinejoin="round">
-		{/* strokeLinejoin="arcs"> */}
 		<path d="M9 18l6-6-6-6" />
 	</svg>
 );

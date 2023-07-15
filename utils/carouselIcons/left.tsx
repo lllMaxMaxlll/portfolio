@@ -9,7 +9,6 @@ const ChevronLeft = ({ size = 28, color = "currentColor" }) => (
 		strokeWidth="2"
 		strokeLinecap="square"
 		strokeLinejoin="round">
-		{/* strokeLinejoin="arcs"> */}
 		<path d="M15 18l-6-6 6-6" />
 	</svg>
 );
