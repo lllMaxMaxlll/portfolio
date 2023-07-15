@@ -27,14 +27,14 @@ function Header() {
 						<nav aria-label="Global" className="hidden md:block">
 							<ul className="flex items-center gap-6 text-sm">
 								{navigation.map((link) => {
-									const isActive = pathname === link.href;
+									const isActive = pathname.endsWith(link.href) || (link.name === "INICIO" && pathname === "/es");
 
 									return (
 										<li key={link.href}>
 											<Link
 												href={link.href}
 												className={`${
-													isActive ? "font-semibold cursor-default" : "text-neutral-700 dark:text-neutral-500"
+													isActive ? "font-semibold pointer-events-none" : "text-neutral-700 dark:text-neutral-500"
 												} transition dark:hover:text-neutral-300 hover:text-neutral-600`}>
 												{link.name}
 											</Link>
