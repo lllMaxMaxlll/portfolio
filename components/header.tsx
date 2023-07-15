@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NavMobile, SwitcherTheme, SwitcherLocale } from "../components";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 function Header() {
 	const pathname = usePathname();
