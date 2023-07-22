@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { ChevronLeft, ChevronRight, Github, LinkIcon, projects } from "@/utils";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 const Carousel3d = () => {
 	const t = useTranslations("Projects");
@@ -26,7 +27,7 @@ const Carousel3d = () => {
 	};
 
 	return (
-		<section className="relative h-[80vh]">
+		<motion.div initial={{ opacity: 0, translateY: 15 }} animate={{ opacity: 1, translateY: 0 }} className="relative h-[80vh]">
 			{projects.map((p, index) => {
 				const isActive = labelIndex === index + 1;
 				const isLeft = (labelIndex === 1 && index + 1 === projects.length) || (labelIndex > 1 && labelIndex - 2 === index);
@@ -101,7 +102,7 @@ const Carousel3d = () => {
 					</div>
 				);
 			})}
-		</section>
+		</motion.div>
 	);
 };
 

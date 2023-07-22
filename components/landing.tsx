@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Typewriter from "typewriter-effect";
 import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 function Landing() {
 	const t = useTranslations("Homepage");
@@ -19,7 +20,10 @@ function Landing() {
 	}, [mousePosition]);
 
 	return (
-		<section className="relative flex justify-center content-center h-[80vh]">
+		<motion.div
+			initial={{ opacity: 0, translateY: 15 }}
+			animate={{ opacity: 1, translateY: 0 }}
+			className="relative flex justify-center content-center h-[80vh]">
 			<div
 				className="hidden md:block absolute -top-32 -left-40 -z-10 rounded-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))]  dark:from-neutral-700  dark:via-neutral-800 to-transparent blur-3xl"
 				style={{ transform: `translate(${position.x * 0.1}px, ${position.y * 0.1}px)`, width: "50%", height: "30rem" }}></div>
@@ -45,7 +49,7 @@ function Landing() {
 					/>
 				</div>
 			</div>
-		</section>
+		</motion.div>
 	);
 }
 
