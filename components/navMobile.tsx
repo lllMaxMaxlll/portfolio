@@ -42,7 +42,7 @@ function NavMobile({
 				} bg-neutral-200 dark:bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition z-20`}>
 				<ul className="flex flex-col gap-6 text-sm">
 					{navigation.map((link) => {
-						const isActive = pathname.endsWith(link.href) || (link.name === "INICIO" && pathname === "/es");
+						const isActive = pathname.endsWith(link.href) || (link.name === "HOME" && pathname === "/en");
 
 						return (
 							<Link

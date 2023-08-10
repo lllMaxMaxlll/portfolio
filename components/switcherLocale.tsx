@@ -11,11 +11,11 @@ function SwitcherLocale() {
 	return (
 		<button className="flex flex-col md:flex-row px-4 md:px-0">
 			{isEng ? (
-				<Link href={pathname} locale="es" className="px-2 hover:text-neutral-400" title="Cambiar a Español">
+				<Link href={formattedPathname || "/"} locale="es" className="px-2 hover:text-neutral-400" title="Cambiar a Español">
 					ES
 				</Link>
 			) : (
-				<Link href={formattedPathname || "/"} locale="en" className="px-2 md:px-0 hover:text-neutral-400 " title="Switch to English">
+				<Link href={pathname} locale="en" className="px-2 md:px-0 hover:text-neutral-400 " title="Switch to English">
 					EN
 				</Link>
 			)}
