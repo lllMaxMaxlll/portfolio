@@ -34,7 +34,7 @@ function Landing() {
 					className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center"
 					style={{
 						filter: `drop-shadow(${position.x * 0.01}px ${position.y * 0.01 + 5}px 10px ${
-							isDark || isDark === undefined ? "#000000" : "#202020  "
+							isDark || isDark === undefined ? "#000000" : "#00000090"
 						})`,
 					}}>
 					MAX HERR
