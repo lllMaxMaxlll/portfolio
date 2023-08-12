@@ -38,9 +38,7 @@ const Carousel3d = () => {
 				return (
 					<div
 						key={`card-${index + 1}`}
-						className={`absolute left-0 right-0 top-0 w-3/4 lg:w-2/3 h-full mx-auto py-5 flex flex-col transition text-center ${
-							isActive && "group z-10"
-						}`}>
+						className={`absolute left-0 right-0 top-0 w-3/4 lg:w-2/3 h-full mx-auto py-5 flex flex-col ${isActive && "group z-10"}`}>
 						<div className="flex justify-center h-auto">
 							{isActive && (
 								<button className="p-2 active:-translate-x-1 transition" onClick={handlePrev}>
@@ -73,9 +71,9 @@ const Carousel3d = () => {
 						{/* Info active project */}
 						{isActive && (
 							<>
-								<h2 className="text-xl sm:text-3xl font-bold pt-5">{p.title}</h2>
+								<h2 className="text-xl sm:text-3xl font-bold pt-5 text-center">{p.title}</h2>
 								<p className="pt-2 font-thin">{projectDescription}</p>
-								<p className="pt-2 text-sm md:text-base font-semibold md:opacity-0 transition md:group-hover:opacity-100">
+								<p className="pt-2 text-sm md:text-base font-semibold md:opacity-0 transition md:group-hover:opacity-100 text-center">
 									{p.technologies.join(" - ")}
 								</p>
 

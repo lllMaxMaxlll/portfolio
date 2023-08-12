@@ -12,12 +12,12 @@ function AboutMe() {
 			initial={{ opacity: 0, translateY: 15 }}
 			animate={{ opacity: 1, translateY: 0 }}
 			className="flex flex-col md:flex-row justify-center content-center h-[80vh] gap-5 mx-auto w-3/4 md:max-w-3xl">
-			<div className="flex flex-col justify-center content-center text-center">
-				<h2 className="text-2xl sm:text-4xl font-bold text-center py-5">{t("title")}</h2>
+			<div className="flex flex-col justify-center content-center">
+				<h2 className="text-2xl sm:text-4xl font-bold py-5">{t("title")}</h2>
 				<p>{t("firstP")}</p>
 				<br />
 				<p className="hidden sm:block">{t("secondP")}</p>
-				<div className="grid grid-cols-6 md:grid-cols-12 gap-6 mx-auto py-5">
+				<div className="grid grid-cols-6 md:grid-cols-12 gap-6 py-5">
 					{aboutIcons.map((icon, i) => (
 						<svg
 							key={i}
