@@ -14,12 +14,13 @@
 		"CHServiciosJuridicos": "Landing page showing information about a legal services firm. It incorporates a contact form powered by EmailJS. It also has light/dark mode.",
 		"PetsAmerica": "Part of the front-end team, building an e-commerce that offers products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email. It also has light/dark mode.",
 		"PixelVerse": "Showcases information about video games sourced from the https://rawg.io/ API. It allows users to explore a collection of games while also enabling them to create and save their own personalized game lists in the database.",
-		"RickAndMorty": "Website that showing cards from the API https://rickandmortyapi.com/. It manages and store information using Redux state. It provides filtering, sorting and searching from API."
+		"RickAndMorty": "Website that showing cards from the API https://rickandmortyapi.com/. It manages and store information using Redux state. It provides filtering, sorting and searching from API.",
+		"MyPhotographyPortfolio": "Personal portfolio, based on this website, that shows the moments I capture every day. Every photo tells a story, and I'm excited to share the stories I've captured with passion and creativity."
 	},
 
 	"About": {
 		"title": "About Me",
-		"firstP": "Hey there!, I'm Maximiliano Herr, a coffee-addicted web developer from Argentina. Creator of exceptional digital experiences. I find joy in capturing special moments through photography and finding beauty in the simple things. When I'm not busy, you'll catch me hanging out with my son and cat, or totally immersed in video games.",
+		"firstP": "Hey there!, I'm Maximiliano Herr, a web developer and coffee addict, Argentine currently living in Australia. I'm a creator of unique digital experiences. In my free time, you can find me capturing moments with my camera, or playing video games.",
 		"secondP": "Currently, I specialize in the following technologies, and I'm totally up for exploring more:"
 	},
 
