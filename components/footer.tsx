@@ -37,6 +37,9 @@ function Footer() {
 					</ul>
 				</div>
 			</div>
+			<p className="absolute hidden md:block right-6 bottom-4 text-sm font-thin dark:text-neutral-600 text-neutral-400">
+				Designed by me with &hearts;
+			</p>
 		</footer>
 	);
 }
