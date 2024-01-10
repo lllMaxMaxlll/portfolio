@@ -13,8 +13,6 @@
 	"Projects": {
 		"CHServiciosJuridicos": "Sitio web que brinda información de un estudio jurídico. Incorpora un formulario de contacto impulsado por EmailJS. También tiene modo claro/oscuro",
 		"PetsAmerica": "Parte del equipo front-end, que construyo un e-commerce que ofrece productos y servicios para mascotas. Con funciones como carrito de compras, integración con PayPal, chatbot y autenticación de usuario a través de Google o correo electrónico. También tiene modo claro/oscuro.",
-		"PixelVerse": "Sitio web que muestra información sobre videojuegos procedente de la API https://rawg.io/. Permite a los usuarios explorar una colección de juegos al mismo tiempo que les permite crear y guardar sus propios juegos personalizados en la base de datos.",
-		"RickAndMorty": "Sitio web que muestra tarjetas de personajes de la API https://rickandmortyapi.com/. Administra y almacena información utilizando el estado Redux. Proporciona filtrado, clasificación y búsqueda desde API.",
 		"MyPhotographyPortfolio": "Portfolio personal, basado en este sitio web, que muestra los momentos que voy capturando día a día. Cada fotografía cuenta una historia, y estoy emocionado de compartir las historias que he capturado con pasión y creatividad."
 	},
 

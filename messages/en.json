@@ -13,8 +13,6 @@
 	"Projects": {
 		"CHServiciosJuridicos": "Landing page showing information about a legal services firm. It incorporates a contact form powered by EmailJS. It also has light/dark mode.",
 		"PetsAmerica": "Part of the front-end team, building an e-commerce that offers products and services for pets. With features such as a shopping cart, PayPal integration, a chatbot, and user authentication through Google or email. It also has light/dark mode.",
-		"PixelVerse": "Showcases information about video games sourced from the https://rawg.io/ API. It allows users to explore a collection of games while also enabling them to create and save their own personalized game lists in the database.",
-		"RickAndMorty": "Website that showing cards from the API https://rickandmortyapi.com/. It manages and store information using Redux state. It provides filtering, sorting and searching from API.",
 		"MyPhotographyPortfolio": "Personal portfolio, based on this website, that shows the moments I capture every day. Every photo tells a story, and I'm excited to share the stories I've captured with passion and creativity."
 	},
 
