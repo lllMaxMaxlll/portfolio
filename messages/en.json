@@ -7,7 +7,7 @@
 
 	"Homepage": {
 		"subtitleTop": "I AM",
-		"typewriter": "A FULL STACK DEVELOPER,A PROBLEM SOLVER,A LOVER OF SIMPLE THINGS,A PHOTOGRAPHER"
+		"typewriter": "A FULL STACK DEVELOPER,A PROBLEM SOLVER,A LOVER OF SIMPLE THINGS"
 	},
 
 	"Projects": {
@@ -18,7 +18,7 @@
 
 	"About": {
 		"title": "About Me",
-		"firstP": "Hey there!, I'm Maximiliano Herr, a web developer and coffee addict, Argentine currently living in Australia. I'm a creator of unique digital experiences. In my free time, you can find me capturing moments with my camera, or playing video games.",
+		"firstP": "Hey there!, I'm Maximiliano Herr, an Argentinian web developer and coffee addict, currently living in Sydney Australia. I'm a creator of unique digital experiences. In my free time, you can find me capturing moments with my camera, or playing video games.",
 		"secondP": "Currently, I specialize in the following technologies, and I'm totally up for exploring more:"
 	},
 

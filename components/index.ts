@@ -6,3 +6,4 @@ export { default as NavMobile } from "./navMobile";
 export { default as Carousel3d } from "./carousel3d";
 export { default as SwitcherTheme } from "./switcherTheme";
 export { default as SwitcherLocale } from "./switcherLocale";
+export * from "./sparkles";

@@ -37,9 +37,9 @@ function NavMobile({
 				</button>
 			</div>
 			<nav
-				className={`absolute block md:hidden ${
+				className={`absolute backdrop-blur-md rounded-xl md:hidden dark:bg-neutral-900/90 bg-neutral-200/90 top-0 right-0 left-0 px-5 py-5 w-full transition ${
 					isOpen ? "translate-y-20" : "-translate-y-56 opacity-0"
-				} bg-neutral-200 dark:bg-neutral-900 top-0 right-0 left-0 px-5 py-10 w-full transition z-20`}>
+				}`}>
 				<ul className="flex flex-col gap-6 text-sm">
 					{navigation.map((link) => {
 						const isActive = pathname.endsWith(link.href) || (link.name === "HOME" && pathname === "/en");
@@ -57,10 +57,10 @@ function NavMobile({
 						);
 					})}
 				</ul>
-				<div className="absolute right-3 top-9">
+				<div className="absolute right-3 top-5">
 					<SwitcherLocale />
 				</div>
-				<div className="absolute right-3 bottom-9">
+				<div className="absolute right-4 bottom-3">
 					<SwitcherTheme />
 				</div>
 			</nav>

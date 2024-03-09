@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { NavMobile, SwitcherTheme, SwitcherLocale } from "../components";
+import { NavMobile, SwitcherTheme, SwitcherLocale } from "@/components";
 import { useTranslations } from "next-intl";
 
 function Header() {
@@ -16,7 +16,7 @@ function Header() {
 	];
 
 	return (
-		<header className="relative top-0 left-0 right-0 h-[10vh] w-full">
+		<header className="relative z-50 top-0 left-0 right-0 h-[10vh] w-full dark:bg-neutral-900/25 bg-neutral-200/25 backdrop-blur-[2px] md:backdrop-blur-none md:bg-none">
 			<div className="w-full mx-auto px-5 sm:px-6 lg:px-16">
 				<div className="flex items-center justify-between py-5">
 					<div className="text-xl md:text-2xl font-bold transition hover:text-neutral-300/75">
