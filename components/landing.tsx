@@ -5,6 +5,7 @@ import { useTheme } from "next-themes";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { SparklesCore } from "./";
+import { CardBody, CardContainer, CardItem } from "./3d-card";
 
 function Landing() {
 	const t = useTranslations("Homepage");
@@ -18,6 +19,7 @@ function Landing() {
 			className="relative flex justify-center content-center h-[80vh]">
 			<div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
 				{/* Particles */}
+
 				<div className="w-full h-[100vh] fixed -z-10 inset-0 top-0">
 					<SparklesCore
 						id="tsparticlesfullpage"
@@ -31,21 +33,29 @@ function Landing() {
 				</div>
 
 				{/* Text */}
-				<div className="flex flex-col justify-center select-none">
-					<p className="mb-2 ps-1 text-start  text-base md:text-xl">{t("subtitleTop")}</p>
-					<h1 suppressHydrationWarning className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center">
-						MAX HERR
-					</h1>
-					<div className="block text-end mt-2  text-base md:text-xl">
-						<Typewriter
-							options={{
-								strings: t("typewriter").split(","),
-								autoStart: true,
-								loop: true,
-							}}
-						/>
-					</div>
-				</div>
+
+				<CardContainer className="inter-var">
+					<CardBody className="relative group/card select-none">
+						<CardItem as="p" translateZ={30} className="mb-2 ms-2 text-start text-base md:text-xl">
+							{t("subtitleTop")}
+						</CardItem>
+						<CardItem
+							// suppressHydrationWarning
+							as="h1"
+							className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-10xl font-bold text-center">
+							MAX HERR
+						</CardItem>
+						<CardItem translateZ={20} className="text-end mt-2 text-base md:text-xl ms-2">
+							<Typewriter
+								options={{
+									strings: t("typewriter").split(","),
+									autoStart: true,
+									loop: true,
+								}}
+							/>
+						</CardItem>
+					</CardBody>
+				</CardContainer>
 			</div>
 		</motion.div>
 	);

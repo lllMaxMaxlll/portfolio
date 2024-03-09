@@ -15,16 +15,14 @@ function AboutMe() {
 			className="flex flex-col md:flex-row justify-center content-center h-[80vh] gap-5 mx-auto w-3/4 md:max-w-3xl">
 			<div className="flex flex-col justify-center content-center">
 				<h2 className="text-2xl sm:text-4xl font-bold py-5">{t("title")}</h2>
-				{/* <p>{t("firstP")}</p> */}
 				<Typewriter
 					options={{
 						strings: t("firstP"),
 						autoStart: true,
-						delay: 40,
+						delay: 15,
 					}}
 				/>
 				<br />
-				{/* <p className="hidden sm:block">{t("secondP")}</p> */}
 				<Typewriter
 					options={{
 						strings: t("secondP"),
