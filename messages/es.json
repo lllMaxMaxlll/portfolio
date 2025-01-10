@@ -1,0 +1,24 @@
+{
+	"Navbar": {
+		"home": "INICIO",
+		"projects": "PROYECTOS",
+		"about": "SOBRE MI",
+		"blog": "BLOG"
+	},
+
+	"Homepage": {
+		"title": "SOY MAX HERR",
+		"typewriter": "UN DESARROLLADOR FULL STACK,UNA SOLUCIÓN AL PROBLEMA,UN AMANTE DE LAS COSAS SIMPLES"
+	},
+
+	"About": {
+		"title": "Sobre Mi",
+		"firstP": "¡Hola! Soy Maximiliano Herr, un desarrollador web y un adicto al café. Soy creador de experiencias digitales únicas. En mi tiempo libre, me encontras capturando momentos con mi cámara y apreciando la belleza de las cosas simples, o jugando con mi hijo.",
+		"secondP": "Actualmente, me especializo en las siguientes tecnologías, y me mantengo abierto a aprender otras:"
+	},
+
+	"NotFound": {
+		"title": "Página no encontrada",
+		"button": "Volver al inicio"
+	}
+}

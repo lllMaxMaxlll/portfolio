@@ -1,0 +1,24 @@
+{
+	"Navbar": {
+		"home": "HOME",
+		"projects": "PROJECTS",
+		"about": "ABOUT",
+		"blog": "BLOG"
+	},
+
+	"Homepage": {
+		"title": "I'M MAX HERR",
+		"typewriter": "A FULL STACK DEVELOPER,A PROBLEM SOLVER,A LOVER OF SIMPLE THINGS"
+	},
+
+	"About": {
+		"title": "About Me",
+		"firstP": "Hey there!, I'm Maximiliano Herr, an Argentinian web developer and coffee addict. I'm a creator of unique digital experiences. In my free time, you can find me capturing moments with my camera, or playing with my son.",
+		"secondP": "Currently, I specialize in the following technologies, and I'm totally up for exploring more:"
+	},
+
+	"NotFound": {
+		"title": "Page not found",
+		"button": "Go Home"
+	}
+}
