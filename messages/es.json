@@ -20,5 +20,15 @@
 	"NotFound": {
 		"title": "Página no encontrada",
 		"button": "Volver al inicio"
+	},
+
+	"MetadataLayout": {
+		"title": "Max Herr",
+		"description": "Full Stack Developer",
+		"keywords": "Max Herr, Portfolio, Web Developer, Full Stack",
+		"home": "Inicio",
+		"projects": "Proyectos",
+		"about": "Sobre mi",
+		"blog": "Blog"
 	}
 }

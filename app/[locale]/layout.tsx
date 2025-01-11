@@ -1,5 +1,4 @@
 import "./globals.css";
-import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
 import { getMessages } from "next-intl/server";
 import { NextIntlClientProvider } from "next-intl";
@@ -7,16 +6,28 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
-import Header from "@/components/header";
+import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-	title: "Max Herr | Home",
-	description: "Max Herr Full Stack Web Developer",
-	keywords: "Max Herr, Portfolio, Web Developer, Full Stack",
+type Props = {
+	params: { locale: string };
 };
+
+type MetadataLayoutMessages = {
+	title: string;
+	home: string;
+};
+
+export async function generateMetadata({ params: { locale } }: Props) {
+	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
+	const { title, home } = messages.MetadataLayout;
+
+	return {
+		title: `${title} | ${home}`,
+	};
+}
 
 export default async function RootLayout({
 	children,
@@ -38,7 +49,7 @@ export default async function RootLayout({
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<NextIntlClientProvider messages={messages}>
 						<main className="w-full">
-							<Header />
+							<Navbar />
 							{children}
 							<Footer />
 						</main>

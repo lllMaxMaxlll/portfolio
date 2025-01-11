@@ -1,9 +1,23 @@
 import AboutMe from "@/components/aboutMe";
+import { getMessages } from "next-intl/server";
 
-export const metadata = {
-	title: "Max Herr | About",
-	description: "About Max Herr",
+type Props = {
+	params: { locale: string };
 };
+
+type MetadataLayoutMessages = {
+	title: string;
+	about: string;
+};
+
+export async function generateMetadata({ params: { locale } }: Props) {
+	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
+	const { title, about } = messages.MetadataLayout;
+
+	return {
+		title: `${title} | ${about}`,
+	};
+}
 
 const About = () => {
 	return <AboutMe />;

@@ -20,5 +20,15 @@
 	"NotFound": {
 		"title": "Page not found",
 		"button": "Go Home"
+	},
+
+	"MetadataLayout": {
+		"title": "Max Herr",
+		"description": "Full Stack Developer",
+		"keywords": "Max Herr, Portfolio, Web Developer, Full Stack",
+		"home": "Home",
+		"projects": "Projects",
+		"about": "About",
+		"blog": "Blog"
 	}
 }

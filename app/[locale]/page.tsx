@@ -3,7 +3,7 @@
 import { ReactTyped } from "react-typed";
 import { useTranslations } from "next-intl";
 import { motion } from "motion/react";
-import DotHoverEffect from "@/components/dotHoverEffect";
+import DotHoverEffect from "@/components/ui/dotHoverEffect";
 
 const Landing = () => {
 	const t = useTranslations("Homepage");

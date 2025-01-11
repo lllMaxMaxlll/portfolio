@@ -1,6 +1,6 @@
 import { GrInstagram, GrLinkedin, GrGithub, GrMail } from "react-icons/gr";
 
-import { IconHoverEffect } from "@/components/iconHoverEffect";
+import { IconHoverEffect } from "@/components/ui/iconHoverEffect";
 
 const itemsFooter = [
 	{
