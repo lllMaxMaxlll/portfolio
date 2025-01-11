@@ -31,7 +31,7 @@ const Landing = () => {
 						className="text-4xl lg:text-6xl font-bold max-w-4xl leading-relaxed lg:leading-snug text-center mx-auto ">
 						{t("title")}
 					</motion.h1>
-					<motion.text
+					<motion.div
 						initial={{
 							opacity: 0,
 							y: 20,
@@ -55,7 +55,7 @@ const Landing = () => {
 							showCursor={true}
 							className=""
 						/>
-					</motion.text>
+					</motion.div>
 				</DotHoverEffect>
 			</div>
 		</motion.div>
