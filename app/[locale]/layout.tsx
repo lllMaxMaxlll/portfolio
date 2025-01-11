@@ -7,6 +7,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
+import Header from "@/components/header";
+import Footer from "@/components/footer";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -24,7 +26,6 @@ export default async function RootLayout({
 	params: { locale: string };
 }>) {
 	const { locale } = await params;
-	// Ensure that the incoming `locale` is valid
 	if (!routing.locales.includes(locale as "en" | "es")) {
 		notFound();
 	}
@@ -33,9 +34,15 @@ export default async function RootLayout({
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
-			<body className={`${rubik.className} antialiased`}>
+			<body className={`${rubik.className} h-screen antialiased`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					<NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+					<NextIntlClientProvider messages={messages}>
+						<main className="w-full">
+							<Header />
+							{children}
+							<Footer />
+						</main>
+					</NextIntlClientProvider>
 					<SpeedInsights />
 				</ThemeProvider>
 			</body>
