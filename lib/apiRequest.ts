@@ -6,10 +6,11 @@ export async function apiRequest<T, R>(url: string, method: "GET" | "POST" | "DE
 	};
 
 	const response = await fetch(url, options);
+	const res = await response.json();
 
 	if (!response.ok) {
-		throw new Error(`API error: ${response.statusText}`);
+		throw new Error(`${res.message}`);
 	}
 
-	return response.json();
+	return res;
 }

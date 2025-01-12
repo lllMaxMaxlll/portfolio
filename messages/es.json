@@ -30,5 +30,15 @@
 		"projects": "Proyectos",
 		"about": "Sobre mi",
 		"blog": "Blog"
+	},
+
+	"Feedback": {
+		"title": "Te gusta el diseño?",
+		"message": "Comentario enviado",
+		"placeholder": "Escribe tu comentario",
+		"error": "Algo salio mal",
+		"footer": "Gracias por tu ayuda",
+		"button": "Enviar",
+		"submitting": "Enviando..."
 	}
 }

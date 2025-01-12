@@ -9,7 +9,8 @@ type MetadataLayoutMessages = {
 	blog: string;
 };
 
-export async function generateMetadata({ params: { locale } }: Props) {
+export async function generateMetadata({ params }: Props) {
+	const locale = await params.locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, blog } = messages.MetadataLayout;
 
