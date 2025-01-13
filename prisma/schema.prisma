@@ -11,14 +11,17 @@ datasource db {
 
 model Project {
   id            Int      @id @default(autoincrement())
-  image         String
-  imageBlur     String
   title         String
-  github        String?  // Optional
-  demo          String?  // Optional
-  technologies  String[] // Store as a PostgreSQL array
+  description   String
+  technologies  String
+  image         String
+  githubLink    String?  // Optional
+  websiteLink   String?  // Optional
+  language      String   // Language code (e.g., "en", "es")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  @@index([language]) // Optimized for filtering by language
 }
 
 model Feedback {

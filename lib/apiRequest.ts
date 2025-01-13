@@ -5,7 +5,7 @@ export async function apiRequest<T, R>(url: string, method: "GET" | "POST" | "DE
 		body: body ? JSON.stringify(body) : undefined,
 	};
 
-	const response = await fetch(url, options);
+	const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, options);
 	const res = await response.json();
 
 	if (!response.ok) {

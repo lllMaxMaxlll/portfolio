@@ -1,11 +1,8 @@
 "use client";
 
 import { apiRequest } from "@/lib/apiRequest";
+import { FeedbackResponse } from "@/types";
 import { useState } from "react";
-
-interface FeedbackResponse {
-	message: string;
-}
 
 export const useSubmitFeedback = () => {
 	const [isLoading, setLoadingState] = useState(false);
@@ -18,7 +15,10 @@ export const useSubmitFeedback = () => {
 		setError(null);
 
 		try {
-			const response = (await apiRequest("/api/feedback", "POST", { happiness, comment })) as FeedbackResponse;
+			const response = (await apiRequest("/api/feedback", "POST", {
+				happiness,
+				comment,
+			})) as FeedbackResponse;
 
 			if (response.message) {
 				setRequestState(true);

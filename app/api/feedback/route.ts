@@ -2,13 +2,12 @@ import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
+	const { happiness, comment } = await request.json();
+
+	if (!happiness || happiness < 1 || happiness > 4 || typeof happiness !== "number") {
+		return NextResponse.json({ message: "Invalid happiness value" }, { status: 400 });
+	}
 	try {
-		const { happiness, comment } = await request.json();
-
-		if (!happiness || happiness < 1 || happiness > 4 || typeof happiness !== "number") {
-			return NextResponse.json({ message: "Invalid happiness value" }, { status: 400 });
-		}
-
 		await db.feedback.create({
 			data: {
 				happiness,

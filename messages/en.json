@@ -22,6 +22,10 @@
 		"button": "Go Home"
 	},
 
+	"Projects": {
+		"title": "Projects"
+	},
+
 	"MetadataLayout": {
 		"title": "Max Herr",
 		"description": "Full Stack Developer",
@@ -31,6 +35,7 @@
 		"about": "About",
 		"blog": "Blog"
 	},
+
 	"Feedback": {
 		"title": "Like the design?",
 		"message": "Feedback submited",
@@ -39,5 +44,11 @@
 		"footer": "Thank you for your help.",
 		"button": "Submit",
 		"submitting": "Submitting..."
+	},
+
+	"Error": {
+		"title": "Something went wrong",
+		"message": "Please try again later",
+		"button": "Try again"
 	}
 }
