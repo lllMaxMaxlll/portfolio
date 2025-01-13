@@ -50,10 +50,10 @@ export const Feedback = () => {
 			initial={{ borderRadius: "2rem" }}
 			animate={happiness ? { borderRadius: "0.5rem", translateY: "-5rem" } : { borderRadius: "2rem" }}
 			className={twMerge(
-				"absolute left-4 z-20 w-fit overflow-hidden border py-2 shadow-sm backdrop-blur-md backdrop-opacity-50",
+				"absolute left-4 z-20 w-fit overflow-hidden border py-2 shadow-sm backdrop-blur-xl",
 				"hidden md:flex md:flex-col"
 			)}>
-			<span className="flex items-center justify-center gap-3 pl-4 pr-2 text-neutral-400">
+			<span className="flex items-center justify-center gap-3 pl-4 pr-2 ">
 				<div className="text-sm hidden md:block">{t("title")}</div>
 				<div className="flex items-center">
 					{feedbackIcons.map((e) => (
@@ -61,9 +61,9 @@ export const Feedback = () => {
 							onClick={() => setHappiness((prev) => (e.happiness === prev ? null : e.happiness))}
 							className={twMerge(
 								happiness === e.happiness
-									? "bg-purple-100 stroke-purple-500 dark:bg-violet-900 dark:stroke-violet-500"
-									: "stroke-neutral-500 dark:stroke-neutral-400",
-								"flex h-8 w-8 items-center justify-center rounded-full transition-all hover:bg-purple-100 hover:stroke-purple-500 hover:dark:bg-violet-900 hover:dark:stroke-violet-500"
+									? "bg-violet-500 stroke-violet-100 dark:bg-violet-900 dark:stroke-violet-500"
+									: "stroke-neutral-600 dark:stroke-neutral-400",
+								"flex h-8 w-8 items-center justify-center rounded-full transition-all hover:bg-violet-100 hover:stroke-violet-500 hover:dark:bg-violet-900 hover:dark:stroke-violet-500"
 							)}
 							key={e.happiness}>
 							{e.emoji}
@@ -102,7 +102,7 @@ export const Feedback = () => {
 							<textarea
 								ref={textRef}
 								placeholder={t("placeholder")}
-								className="hidden md:block min-h-24 w-full resize-none rounded-md border bg-transparent p-2 text-sm placeholder-neutral-400 focus:border-neutral-400 focus:outline-0 dark:border-neutral-800 focus:dark:border-white"
+								className="hidden md:block min-h-24 w-full resize-none rounded-md border bg-transparent p-2 text-sm placeholder-neutral-500 focus:border-neutral-400 focus:outline-0 dark:border-neutral-800 focus:dark:border-white"
 							/>
 							<div className="flex h-fit w-full justify-end">
 								<button

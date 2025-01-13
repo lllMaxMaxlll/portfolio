@@ -94,7 +94,7 @@ const LogoColumn: React.FC<LogoColumnProps> = React.memo(({ logos, index, curren
 					key={`${logos[currentIndex].id}-${currentIndex}`}
 					className="absolute inset-0 flex items-center justify-center"
 					// Animation for when the logo enters
-					initial={{ y: "10%", opacity: 0, filter: "blur(8px)" }}
+					initial={{ y: "10%", opacity: 0 }}
 					// Animation for when the logo is displayed
 					animate={{
 						y: "0%",
