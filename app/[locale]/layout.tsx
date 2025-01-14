@@ -21,8 +21,7 @@ type MetadataLayoutMessages = {
 };
 
 export async function generateMetadata(props: Props) {
-	const params = await props.params;
-	const { locale } = params;
+	const { locale } = props.params;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, home } = messages.MetadataLayout;
 

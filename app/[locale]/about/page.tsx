@@ -2,7 +2,7 @@ import AboutMe from "@/components/aboutMe";
 import { getMessages } from "next-intl/server";
 
 type Props = {
-	params: Promise<{ locale: string }>;
+	params: { locale: string };
 };
 
 type MetadataLayoutMessages = {
@@ -10,9 +10,8 @@ type MetadataLayoutMessages = {
 	about: string;
 };
 
-export async function generateMetadata(props: Props) {
-	const params = await props.params;
-	const { locale } = params;
+export async function generateMetadata({ params }: Props) {
+	const locale = params.locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, about } = messages.MetadataLayout;
 
