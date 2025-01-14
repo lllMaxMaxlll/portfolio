@@ -4,7 +4,7 @@ import { ProjectResponseType } from "@/types";
 import { getLocale } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
-import { GrGithub } from "react-icons/gr";
+import { GrGithub, GrLink } from "react-icons/gr";
 
 const getProjects = async (language: string): Promise<ProjectResponseType> => {
 	const res = await apiRequest(`/api/projects?language=${language}`, "GET");
@@ -25,14 +25,20 @@ export default async function ProjectsCarousel() {
 				technologies: project.technologies,
 				src: project.image,
 				content: (
-					<div className="text-white">
+					<div className="text-primary-foreground dark:text-primary">
 						<p>{project.description}</p>
-						{project.githubLink && (
-							<Link href={project.githubLink} target="_blank" rel="noopener noreferrer" className="m-6">
-								<GrGithub size={20} />
-							</Link>
-						)}
-						{project.websiteLink && <a href={project.websiteLink} target="_blank" rel="noopener noreferrer"></a>}
+						<div className="flex justify-center">
+							{project.githubLink && (
+								<Link href={project.githubLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
+									<GrGithub size="2rem" />
+								</Link>
+							)}
+							{project.websiteLink && (
+								<Link href={project.websiteLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
+									<GrLink size="2rem" />
+								</Link>
+							)}
+						</div>
 					</div>
 				),
 			}}
@@ -41,7 +47,7 @@ export default async function ProjectsCarousel() {
 	));
 
 	return (
-		<div className="w-full h-full py-4">
+		<div className="w-full h-[80vh] py-4">
 			<h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200">{t("title")}</h2>
 			<Carousel items={cards} />
 		</div>

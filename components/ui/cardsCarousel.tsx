@@ -188,13 +188,20 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 							</button>
 							<motion.p
 								layoutId={layout ? `title-${card.title}` : undefined}
-								className="text-2xl md:text-5xl font-semibold text-neutral-100 mt-4">
+								className="text-2xl md:text-5xl font-semibold text-neutral-100 my-4">
 								{card.title}
 							</motion.p>
 							<motion.p layoutId={layout ? `category-${card.title}` : undefined} className="text-base font-medium text-neutral-100">
 								{card.technologies}
 							</motion.p>
-							<div className="py-10">{card.content}</div>
+							<BlurImage
+								src={card.src}
+								alt={`${card.title} Screenshot`}
+								className="my-6 w-full h-auto rounded-xl object-cover "
+								width={800}
+								height={450}
+							/>
+							<>{card.content}</>
 						</motion.div>
 					</div>
 				)}
@@ -203,7 +210,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 				layoutId={layout ? `card-${card.title}` : undefined}
 				onClick={handleOpen}
 				className="rounded-3xl h-80 w-56 md:h-96 md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10 hover:-translate-y-2 transition">
-				<div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-black/50 via-transparent to-transparent z-30 pointer-events-none" />
+				<div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-neutral-900/70 via-transparent to-transparent z-30 pointer-events-none" />
 				<div className="relative z-40 p-8">
 					<motion.p
 						layoutId={layout ? `title-${card.title}` : undefined}
@@ -211,7 +218,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 						{card.title}
 					</motion.p>
 				</div>
-				<BlurImage src={card.src} alt={card.title} fill className="object-cover absolute z-10 inset-0" />
+				<BlurImage src={card.src} alt={card.title} sizes="50%" fill className="object-cover absolute z-10 inset-0" />
 			</motion.button>
 		</>
 	);
