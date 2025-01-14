@@ -1,3 +1,4 @@
+import { useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 
 type Props = {
@@ -20,10 +21,12 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default function Blog() {
+	const t = useTranslations("Blog");
+
 	return (
 		<div className="flex flex-col md:flex-row justify-center content-center h-[80vh] mx-auto">
 			<div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
-				<h1 className="text-2xl sm:text-4xl font-bold">COMING SOON</h1>
+				<h1 className="text-2xl sm:text-4xl font-bold">{t("comingsoon")}</h1>
 			</div>
 		</div>
 	);

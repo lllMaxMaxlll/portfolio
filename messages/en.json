@@ -50,5 +50,8 @@
 		"title": "Something went wrong",
 		"message": "Please try again later",
 		"button": "Try again"
+	},
+	"Blog": {
+		"comingsoon": "Coming soon"
 	}
 }

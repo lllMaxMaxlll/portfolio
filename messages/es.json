@@ -50,5 +50,8 @@
 		"title": "Algo salio mal",
 		"message": "Intentalo más tarde",
 		"button": "Reintentar"
+	},
+	"Blog": {
+		"comingsoon": "Proximamente"
 	}
 }
