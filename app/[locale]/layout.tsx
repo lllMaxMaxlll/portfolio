@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
+import { Metadata } from "next";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
@@ -20,8 +21,8 @@ type MetadataLayoutMessages = {
 	home: string;
 };
 
-export async function generateMetadata(props: Props) {
-	const { locale } = props.params;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const locale = (await params).locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, home } = messages.MetadataLayout;
 
@@ -29,7 +30,6 @@ export async function generateMetadata(props: Props) {
 		title: `${title} | ${home}`,
 	};
 }
-
 export default async function RootLayout({
 	children,
 	params,

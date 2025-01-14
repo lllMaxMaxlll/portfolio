@@ -1,6 +1,7 @@
 import { Card, Carousel } from "@/components/ui/cardsCarousel";
 import { apiRequest } from "@/lib/apiRequest";
 import { ProjectResponseType } from "@/types";
+import { Metadata } from "next";
 import { getLocale, getMessages } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
@@ -15,8 +16,8 @@ type MetadataLayoutMessages = {
 	projects: string;
 };
 
-export async function generateMetadata({ params }: Props) {
-	const locale = params.locale;
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const locale = (await params).locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, projects } = messages.MetadataLayout;
 

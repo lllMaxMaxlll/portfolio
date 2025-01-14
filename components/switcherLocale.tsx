@@ -30,7 +30,7 @@ export default function SwitcherLocale() {
 					<ChevronDown className="h-4 w-4" />
 				</Button>
 			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end" className="w-[100px]">
+			<DropdownMenuContent align="end" className="w-[100px] backdrop-blur">
 				<DropdownMenuRadioGroup value={locale} onValueChange={handleLanguageChange}>
 					<DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
 					<DropdownMenuRadioItem value="es">Español</DropdownMenuRadioItem>
