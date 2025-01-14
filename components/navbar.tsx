@@ -59,7 +59,7 @@ const Navbar = () => {
 					</div>
 
 					{/* Mobile Navigation */}
-					<div className="md:hidden">
+					<div className="md:hidden backdrop-blur">
 						<Sheet>
 							<SheetTrigger asChild>
 								<Button variant="ghost" size="sm">

@@ -32,9 +32,8 @@ const itemsFooter = [
 
 function Footer() {
 	return (
-		<footer className="absolute mb-20 md:relative flex items-center justify-center w-full bottom-4 md:bottom-0 z-10">
+		<footer className="absolute mb-20 md:relative flex items-center justify-center w-full z-10">
 			<Feedback />
-
 			<div className="mx-auto px-5 flex items-center justify-center">
 				<IconHoverEffect items={itemsFooter} />
 			</div>
