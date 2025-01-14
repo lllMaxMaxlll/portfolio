@@ -12,16 +12,14 @@ import { Metadata } from "next";
 
 const rubik = Rubik({ subsets: ["latin"] });
 
-type Props = {
-	params: { locale: string };
-};
+type ParamsType = Promise<{ locale: string }>;
 
 type MetadataLayoutMessages = {
 	title: string;
 	home: string;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
 	const locale = (await params).locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, home } = messages.MetadataLayout;

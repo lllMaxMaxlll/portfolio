@@ -2,16 +2,14 @@ import { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-type Props = {
-	params: { locale: string };
-};
+type ParamsType = Promise<{ locale: string }>;
 
 type MetadataLayoutMessages = {
 	title: string;
 	blog: string;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
 	const locale = (await params).locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, blog } = messages.MetadataLayout;

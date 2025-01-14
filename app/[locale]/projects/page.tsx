@@ -7,16 +7,14 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { GrGithub, GrLink } from "react-icons/gr";
 
-type Props = {
-	params: { locale: string };
-};
+type ParamsType = Promise<{ locale: string }>;
 
 type MetadataLayoutMessages = {
 	title: string;
 	projects: string;
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
 	const locale = (await params).locale;
 	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
 	const { title, projects } = messages.MetadataLayout;
