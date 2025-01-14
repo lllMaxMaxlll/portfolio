@@ -65,8 +65,8 @@ export default async function ProjectsCarousel() {
 	));
 
 	return (
-		<div className="w-full h-[80vh] py-4">
-			<h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200">{t("title")}</h2>
+		<div className="w-full min-h-[70vh] md:min-h-[80vh]">
+			<h2 className="max-w-7xl pl-6 mx-auto text-xl md:text-5xl font-bold py-4">{t("title")}</h2>
 			<Carousel items={cards} />
 		</div>
 	);

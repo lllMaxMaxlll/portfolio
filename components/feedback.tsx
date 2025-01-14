@@ -48,13 +48,10 @@ export const Feedback = () => {
 		<motion.div
 			layout
 			initial={{ borderRadius: "2rem" }}
-			animate={happiness ? { borderRadius: "0.5rem", translateY: "-5rem" } : { borderRadius: "2rem" }}
-			className={twMerge(
-				"absolute left-4 z-20 w-fit overflow-hidden border py-2 shadow-sm backdrop-blur-xl",
-				"hidden md:flex md:flex-col"
-			)}>
+			animate={happiness ? { borderRadius: "0.5rem", translateY: "-10rem" } : { borderRadius: "2rem" }}
+			className={twMerge("absolute left-4 w-fit overflow-hidden border py-2 shadow-sm backdrop-blur", "hidden md:flex md:flex-col")}>
 			<span className="flex items-center justify-center gap-3 pl-4 pr-2 ">
-				<div className="text-sm hidden md:block">{t("title")}</div>
+				<div className="text-sm hidden lg:block">{t("title")}</div>
 				<div className="flex items-center">
 					{feedbackIcons.map((e) => (
 						<button

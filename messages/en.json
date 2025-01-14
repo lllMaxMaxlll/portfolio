@@ -53,5 +53,8 @@
 	},
 	"Blog": {
 		"comingsoon": "Coming soon"
+	},
+	"Footer": {
+		"designedText": "Designed by me with"
 	}
 }

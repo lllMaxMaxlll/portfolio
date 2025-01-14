@@ -2,6 +2,7 @@ import { GrInstagram, GrLinkedin, GrGithub, GrMail } from "react-icons/gr";
 
 import { IconHoverEffect } from "@/components/ui/iconHoverEffect";
 import { Feedback } from "./feedback";
+import { useTranslations } from "next-intl";
 
 const itemsFooter = [
 	{
@@ -31,13 +32,15 @@ const itemsFooter = [
 ];
 
 function Footer() {
+	const t = useTranslations("Footer");
+
 	return (
-		<footer className="absolute mb-20 md:relative flex items-center justify-center w-full z-10">
-			<Feedback />
-			<div className="mx-auto px-5 flex items-center justify-center">
+		<footer className="w-full text-center">
+			<div className="relative flex flex-col items-center">
+				<Feedback />
 				<IconHoverEffect items={itemsFooter} />
+				<p className="hidden md:block cursor-default text-sm font-thin">{t("designedText")} &hearts;</p>
 			</div>
-			<p className="hidden md:block absolute right-6 bottom-2 cursor-default text-sm font-thin">Designed by me with &hearts;</p>
 		</footer>
 	);
 }

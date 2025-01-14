@@ -12,7 +12,7 @@ const Landing = () => {
 		<motion.div
 			initial={{ opacity: 0, translateY: 15 }}
 			animate={{ opacity: 1, translateY: 0 }}
-			className="relative flex justify-center content-center h-[80vh] ">
+			className="relative flex justify-center content-center min-h-[70vh] md:min-h-[80vh]">
 			<div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
 				<DotHoverEffect>
 					<motion.h1

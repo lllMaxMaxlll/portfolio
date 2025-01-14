@@ -45,7 +45,7 @@ export default async function RootLayout({
 
 	return (
 		<html lang={locale} suppressHydrationWarning>
-			<body className={`${rubik.className} h-screen antialiased`}>
+			<body className={`${rubik.className} antialiased`}>
 				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 					<NextIntlClientProvider messages={messages}>
 						<main className="w-full">

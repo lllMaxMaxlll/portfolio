@@ -23,7 +23,7 @@ export default function Blog() {
 	const t = useTranslations("Blog");
 
 	return (
-		<div className="flex flex-col md:flex-row justify-center content-center h-[80vh] mx-auto">
+		<div className="flex flex-col md:flex-row justify-center content-center min-h-[70vh] md:min-h-[80vh] mx-auto">
 			<div className="w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
 				<h1 className="text-2xl sm:text-4xl font-bold">{t("comingsoon")}</h1>
 			</div>
