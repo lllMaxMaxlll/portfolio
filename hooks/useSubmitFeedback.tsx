@@ -14,11 +14,11 @@ export const useSubmitFeedback = () => {
 		setError(null);
 
 		try {
-			createFeedback({ happiness, comment });
+			await createFeedback({ happiness, comment });
 			setRequestState(true);
 		} catch (err) {
-			console.error(err);
 			setError("Failed to submit feedback.");
+			console.error(err);
 		} finally {
 			setLoadingState(false);
 		}
