@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 import SwitcherLocale from "@/components/switcherLocale";
 import ThemeToggle from "@/components/theme-toggle";
-import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { MenuIcon } from "lucide-react";
+import { MobileNavbar } from "./mobileNavbar";
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -59,38 +57,25 @@ const Navbar = () => {
 					</div>
 
 					{/* Mobile Navigation */}
-					<div className="md:hidden backdrop-blur">
-						<Sheet>
-							<SheetTrigger asChild>
-								<Button variant="ghost" size="sm">
-									<MenuIcon className="h-6 w-6" />
-								</Button>
-							</SheetTrigger>
-							<SheetContent side="right" className="flex flex-col space-y-4 p-4 md:hidden">
-								<nav aria-label="Global">
-									<ul className="space-y-4 text-sm mt-4">
-										{navigation.map((link) => (
-											<li key={link.href}>
-												<Link
-													href={`/${locale}${link.href}`}
-													className={`${
-														isActive(link.href) ? "font-semibold pointer-events-none" : "text-neutral-700 dark:text-neutral-500"
-													} transition dark:hover:text-neutral-300 hover:text-neutral-600`}>
-													{link.name}
-												</Link>
-											</li>
-										))}
-										<li>
-											<ThemeToggle />
-										</li>
-										<li>
-											<SwitcherLocale />
-										</li>
-									</ul>
-								</nav>
-							</SheetContent>
-						</Sheet>
-					</div>
+					<MobileNavbar>
+						<ul className="space-y-4 text-sm py-4 px-8">
+							{navigation.map((link) => (
+								<li key={link.href}>
+									<Link
+										href={`/${locale}${link.href}`}
+										className={`${
+											isActive(link.href) ? "font-semibold pointer-events-none" : "text-neutral-700 dark:text-neutral-500"
+										} transition dark:hover:text-neutral-300 hover:text-neutral-600 text-lg`}>
+										{link.name}
+									</Link>
+								</li>
+							))}
+						</ul>
+						<div className="flex w-full justify-between gap-4 px-10">
+							<ThemeToggle />
+							<SwitcherLocale />
+						</div>
+					</MobileNavbar>
 				</div>
 			</div>
 		</header>
