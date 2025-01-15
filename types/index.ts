@@ -9,16 +9,8 @@ export type ProjectDataType = {
 	language: string;
 };
 
-export type ProjectResponseType = {
-	projects: ProjectDataType[];
-};
-
 export type FeedbackType = {
 	id: number;
 	happiness: number;
-	comment?: string;
-};
-
-export type FeedbackResponse = {
-	message: string;
+	comment: string | null;
 };

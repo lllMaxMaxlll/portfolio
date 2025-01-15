@@ -1,7 +1,6 @@
 "use client";
 
-import { apiRequest } from "@/lib/apiRequest";
-import { FeedbackResponse } from "@/types";
+import { createFeedback } from "@/actions/feedbackActions";
 import { useState } from "react";
 
 export const useSubmitFeedback = () => {
@@ -15,14 +14,8 @@ export const useSubmitFeedback = () => {
 		setError(null);
 
 		try {
-			const response = (await apiRequest("/api/feedback", "POST", {
-				happiness,
-				comment,
-			})) as FeedbackResponse;
-
-			if (response.message) {
-				setRequestState(true);
-			}
+			createFeedback({ happiness, comment });
+			setRequestState(true);
 		} catch (err) {
 			console.error(err);
 			setError("Failed to submit feedback.");

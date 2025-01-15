@@ -1,8 +1,7 @@
+import { getProjects } from "@/actions/projectsActions";
 import { Card, Carousel } from "@/components/ui/cardsCarousel";
-import { apiRequest } from "@/lib/apiRequest";
-import { ProjectResponseType } from "@/types";
 import { Metadata } from "next";
-import { getLocale, getMessages } from "next-intl/server";
+import { getMessages } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { GrGithub, GrLink } from "react-icons/gr";
@@ -24,16 +23,9 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 	};
 }
 
-const getProjects = async (language: string): Promise<ProjectResponseType> => {
-	const res = await apiRequest(`/api/projects?language=${language}`, "GET");
-	return res as ProjectResponseType;
-};
-
 export default async function ProjectsCarousel() {
 	const t = await getTranslations("Projects");
-	const locale = await getLocale();
-
-	const { projects } = await getProjects(locale);
+	const projects = await getProjects();
 
 	const cards = projects.map((project, index) => (
 		<Card
