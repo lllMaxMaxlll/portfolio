@@ -1,7 +1,7 @@
 export async function apiRequest<T, R>(url: string, method: "GET" | "POST" | "DELETE", body?: T): Promise<R> {
 	const options: RequestInit = {
 		method,
-		headers: { "Content-Type": "application/json", Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}` },
+		headers: { "Content-Type": "application/json" },
 		body: body ? JSON.stringify(body) : undefined,
 	};
 
