@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { getMessages } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { GrGithub, GrLink } from "react-icons/gr";
 
 type ParamsType = Promise<{ locale: string }>;
@@ -27,6 +28,10 @@ export default async function ProjectsCarousel() {
 	const t = await getTranslations("Projects");
 	const projects = await getProjects();
 
+	if (!projects.length) {
+		return  notFound();
+	}
+
 	const cards = projects.map((project, index) => (
 		<Card
 			key={project.id}
@@ -40,12 +45,12 @@ export default async function ProjectsCarousel() {
 						<div className="flex justify-center">
 							{project.githubLink && (
 								<Link href={project.githubLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
-									<GrGithub size="2rem" />
+									<GrGithub size="24px" />
 								</Link>
 							)}
 							{project.websiteLink && (
 								<Link href={project.websiteLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
-									<GrLink size="2rem" />
+									<GrLink size="24px" />
 								</Link>
 							)}
 						</div>

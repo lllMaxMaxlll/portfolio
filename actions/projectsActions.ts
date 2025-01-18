@@ -1,10 +1,10 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { ProjectDataType } from "@/types";
+import { ProjectData } from "@/types";
 import { getLocale } from "next-intl/server";
 
-export const getProjects = async (): Promise<ProjectDataType[]> => {
+export const getProjects = async (): Promise<ProjectData[]> => {
 	try {
 		const language = await getLocale();
 		if (!language) {
@@ -17,8 +17,7 @@ export const getProjects = async (): Promise<ProjectDataType[]> => {
 		});
 
 		if (!projects || projects.length === 0) {
-			console.log("No projects found for language:", language);
-			return [];
+			throw new Error("No projects found for language")
 		}
 
 		return projects;

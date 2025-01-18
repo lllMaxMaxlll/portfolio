@@ -1,14 +1,14 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { FeedbackType } from "@/types";
+import { Feedback } from "@/types";
 
 type Props = {
 	happiness: number;
 	comment?: string;
 };
 
-export const createFeedback = async ({ happiness, comment }: Props): Promise<FeedbackType> => {
+export const createFeedback = async ({ happiness, comment }: Props): Promise<Feedback> => {
 	try {
 		if (!happiness || happiness < 1 || happiness > 4 || typeof happiness !== "number") {
 			throw new Error("Happiness should be a number between 1 and 4");
@@ -28,7 +28,7 @@ export const createFeedback = async ({ happiness, comment }: Props): Promise<Fee
 	}
 };
 
-export const getFeedback = async (): Promise<FeedbackType[]> => {
+export const getFeedback = async (): Promise<Feedback[]> => {
 	try {
 		const feedbacks = await db.feedback.findMany({});
 

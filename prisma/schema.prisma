@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,23 +9,56 @@ datasource db {
 }
 
 model Project {
-  id            Int      @id @default(autoincrement())
-  title         String
-  description   String
-  technologies  String
-  image         String
-  githubLink    String?  // Optional
-  websiteLink   String?  // Optional
-  language      String   // Language code (e.g., "en", "es")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+  id           String   @id @default(cuid())
+  title        String
+  description  String
+  technologies String
+  image        String
+  githubLink   String? // Optional
+  websiteLink  String? // Optional
+  language     String // Language code (e.g., "en", "es")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([language]) // Optimized for filtering by language
 }
 
 model Feedback {
-  id            Int      @id @default(autoincrement())
-  happiness     Int
-  comment       String?
-  createdAt     DateTime @default(now())
+  id        String   @id @default(cuid())
+  happiness Int
+  comment   String?
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id         String   @id @default(cuid())
+  title      Json // JSON object to store title in multiple languages
+  content    Json // JSON object to store content in multiple languages
+  slug       String   @unique
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  published  Boolean  @default(false)
+  coverImage String? // URL of the cover image (optional)
+
+  tags BlogPostTag[] // Relation to the join table
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  name      Json // JSON object to store tag names in multiple languages
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  posts BlogPostTag[] // Relation to the join table
+}
+
+model BlogPostTag {
+  id         String @id @default(cuid())
+  blogPostId String
+  tagId      String
+
+  blogPost BlogPost @relation(fields: [blogPostId], references: [id])
+  tag      Tag      @relation(fields: [tagId], references: [id])
+
+  @@unique([blogPostId, tagId]) // Ensures a blog post cannot have duplicate tags
 }
