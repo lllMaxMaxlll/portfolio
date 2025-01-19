@@ -15,8 +15,8 @@ export async function generateStaticParams() {
 	);
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
-	const { slug } = params;
+export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+	const slug = (await params).slug;
 	const locale = await getLocale();
 
 	const post = await getPostBySlug(slug, locale);
