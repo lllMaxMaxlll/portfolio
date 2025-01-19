@@ -30,35 +30,40 @@ model Feedback {
   createdAt DateTime @default(now())
 }
 
-model BlogPost {
-  id         String   @id @default(cuid())
-  title      Json // JSON object to store title in multiple languages
-  content    Json // JSON object to store content in multiple languages
-  slug       String   @unique
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  published  Boolean  @default(false)
-  coverImage String? // URL of the cover image (optional)
+model Post {
+  id           String        @id @default(cuid())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  slug         String        @unique
+  image        String?
+  tags         TagOnPost[]
+  translations Translation[]
+}
 
-  tags BlogPostTag[] // Relation to the join table
+model Translation {
+  id       String  @id @default(cuid())
+  postId   String
+  language String // e.g., "en", "es"
+  title    String
+  content  String  @db.Text // To handle long content
+  summary  String? @db.Text // Optional, for meta descriptions
+  post     Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+  @@unique([postId, language]) // Ensure one translation per language per post
 }
 
 model Tag {
-  id        String   @id @default(cuid())
-  name      Json // JSON object to store tag names in multiple languages
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  posts BlogPostTag[] // Relation to the join table
+  id    String      @id @default(cuid())
+  name  String      @unique
+  posts TagOnPost[]
 }
 
-model BlogPostTag {
-  id         String @id @default(cuid())
-  blogPostId String
-  tagId      String
+model TagOnPost {
+  id     String @id @default(cuid())
+  postId String
+  tagId  String
+  post   Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag    Tag    @relation(fields: [tagId], references: [id], onDelete: Cascade)
 
-  blogPost BlogPost @relation(fields: [blogPostId], references: [id])
-  tag      Tag      @relation(fields: [tagId], references: [id])
-
-  @@unique([blogPostId, tagId]) // Ensures a blog post cannot have duplicate tags
+  @@unique([postId, tagId]) // Prevent duplicate tag associations
 }

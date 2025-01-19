@@ -15,32 +15,36 @@ export interface Feedback {
 	comment: string | null;
 }
 
-export interface BlogPost {
+export interface Post {
 	id: string;
-	title: MultilingualContent;
-	content: MultilingualContent;
-	slug: string;
 	createdAt: Date;
 	updatedAt: Date;
-	published: boolean;
-	coverImage?: string;
-	tags: BlogPostTag[];
+	slug: string;
+	tags: TagOnPost[];
+	translations: Translation[];
 }
 
-export interface BlogPostTag {
+export interface Translation {
 	id: string;
-	blogPostId: string;
-	tagId: string;
-	tag: Tag;
-	blogPost: BlogPost;
+	postId: string;
+	language: string; // e.g., 'en', 'es'
+	title: string;
+	content: string; // Markdown content
+	summary?: string; // Optional meta description
+	locale: string; // e.g., 'en-US', 'es-AR'
+	post: Post;
 }
 
 export interface Tag {
 	id: string;
-	name: MultilingualContent;
-	posts?: BlogPostTag[];
+	name: string; // Unique tag name
+	posts: TagOnPost[];
 }
 
-export interface MultilingualContent {
-	[key: string]: string; // where key is the language code
+export interface TagOnPost {
+	id: string;
+	postId: string;
+	tagId: string;
+	post: Post;
+	tag: Tag;
 }
