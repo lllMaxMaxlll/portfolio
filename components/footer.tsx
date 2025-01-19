@@ -39,7 +39,7 @@ function Footer() {
 			<div className="relative flex flex-col items-center">
 				<Feedback />
 				<IconHoverEffect items={itemsFooter} />
-				<p className="hidden md:block cursor-default text-sm font-thin">{t("designedText")} &hearts;</p>
+				<p className="hidden md:block cursor-default text-sm font-thin py-2">{t("designedText")} &hearts;</p>
 			</div>
 		</footer>
 	);
