@@ -1,10 +1,11 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { Post } from "@/types";
 
-export const getAllPosts = async (locale: string) => {
+export const getAllPosts = async (locale: string): Promise<Post[]> => {
 	try {
-		return await db.post.findMany({
+		const posts = await db.post.findMany({
 			orderBy: {
 				createdAt: "desc",
 			},
@@ -25,6 +26,17 @@ export const getAllPosts = async (locale: string) => {
 				},
 			},
 		});
+
+    return posts.map((post) => ({
+          id: post.id,
+          slug: post.slug,
+          title: post.translations[0]?.title,
+          summary: post.translations[0]?.summary,
+          image: post.image,
+          createdAt: post.createdAt,
+          tags: post.tags.map((t) => {
+            return { name: t.tag.name, id: t.tag.id }}),
+        })).filter((post) => post.title)// Filter out posts without a translation
 	} catch (error) {
 		console.error("Error fetching blog posts:", error);
 		throw error;
@@ -68,6 +80,6 @@ export const getPostBySlug = async (slug: string, locale: string) => {
 	}
 };
 
-export const getBlogPostsByTag = async () => {
+export const getPostsByTag = async () => {
 	return [];
 };

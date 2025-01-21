@@ -1,11 +1,12 @@
 import type { Config } from "tailwindcss";
 import tailwindcssAnimate from "tailwindcss-animate";
 import svgToDataUri from "mini-svg-data-uri";
+import typography from '@tailwindcss/typography';
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 import type { PluginAPI } from "tailwindcss/types/config";
 
 export default {
-	darkMode: ["class"],
+	darkMode: "class",
 	content: ["./pages/**/*.{js,ts,jsx,tsx,mdx}", "./components/**/*.{js,ts,jsx,tsx,mdx}", "./app/**/*.{js,ts,jsx,tsx,mdx}"],
 	theme: {
 		extend: {
@@ -56,9 +57,22 @@ export default {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
 			},
+			typography: (theme: (path: string) => string) => ({
+				dark: {
+					css: {
+						color: theme("colors.gray.300"),
+						'[class~="lead"]': { color: theme("colors.gray.400") },
+						a: { color: theme("colors.blue.400") },
+						strong: { color: theme("colors.gray.100") },
+						"ul > li::before": { backgroundColor: theme("colors.gray.500") },
+						blockquote: { color: theme("colors.gray.100") },
+					},
+				},
+			}),
 		},
 	},
 	plugins: [
+		typography,
 		tailwindcssAnimate,
 		({ matchUtilities, theme }: { matchUtilities: PluginAPI["matchUtilities"]; theme: PluginAPI["theme"] }) => {
 			matchUtilities(

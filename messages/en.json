@@ -52,7 +52,8 @@
 		"button": "Try again"
 	},
 	"Blog": {
-		"comingsoon": "Coming soon"
+		"comingsoon": "Coming soon",
+		"backButton": "Go Back"
 	},
 	"Footer": {
 		"designedText": "Designed by me with"

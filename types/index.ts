@@ -17,11 +17,12 @@ export interface Feedback {
 
 export interface Post {
 	id: string;
-	createdAt: Date;
-	updatedAt: Date;
 	slug: string;
-	tags: TagOnPost[];
-	translations: Translation[];
+  title: string
+  summary: string | null;
+  image: string | null;
+	createdAt: Date;
+	tags: Tag[];
 }
 
 export interface Translation {
@@ -38,7 +39,8 @@ export interface Translation {
 export interface Tag {
 	id: string;
 	name: string; // Unique tag name
-	posts: TagOnPost[];
+  // postId: string
+  // tagId: string
 }
 
 export interface TagOnPost {

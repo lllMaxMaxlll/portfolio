@@ -44,3 +44,4 @@ next-env.d.ts
 
 # Supabase local dev
 /supabase
+/prisma/seed.ts
