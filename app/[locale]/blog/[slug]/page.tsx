@@ -33,7 +33,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 
 	return (
 		<article className="px-4 py-6 md:px-6 md:py-12 lg:py-16 min-h-[100dvh]">
-			<div className="prose prose-gray max-w-3xl mx-auto dark:prose-invert">
+			<div className="prose prose-neutral max-w-3xl mx-auto dark:prose-invert">
 				<Link
 					href={`/${locale}/blog`}
 					className="inline-flex items-center p-2 rounded-lg mb-4 hover:bg-accent hover:text-accent-foreground transition-all">
@@ -41,8 +41,8 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 					{t("backButton")}
 				</Link>
 				<h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
-				<h2 className="text-gray-600 mb-2 text-lg">{translation.summary}</h2>
-				<span className="text-gray-500 mb-8">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
+				<h2 className="text-neutral-600 dark:text-neutral-400 mb-2 text-lg">{translation.summary}</h2>
+				<span className="text-neutral-500 mb-8">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
 				<div className="flex flex-wrap gap-2 mb-4">
 					{post.tags.map(({ tag }) => (
 						<span key={tag.id} className="py-1 text-sm">
@@ -51,7 +51,7 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 					))}
 				</div>
 				{post.image && <Image src={post.image} alt={translation.title} width={800} height={400} className="my-4 mx-auto" />}
-				<div className="prose prose-gray max-w-none dark:prose-invert py-2" dangerouslySetInnerHTML={{ __html: content }} />
+				<div className="prose prose-neutral max-w-none dark:prose-invert py-2" dangerouslySetInnerHTML={{ __html: content }} />
 			</div>
 		</article>
 	);

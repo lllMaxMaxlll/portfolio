@@ -31,11 +31,11 @@ export default async function Blog() {
 		<div className="px-4 min-h-[70vh] md:min-h-[80vh]">
 			<div className="max-w-4xl mx-auto py-8">
 				{posts?.map((post) => (
-					<article key={post.id} className="mb-8 pb-4 hover:bg-accent hover:text-accent-foreground rounded-lg">
+					<article key={post.id} className="mb-8 p-4 hover:bg-accent hover:text-accent-foreground rounded-lg">
 						<Link href={`/${locale}/blog/${post.slug}`}>
-							<h2 className="text-2xl font-semibold hover:underline py-2">{post.title}</h2>
+							<h2 className="text-2xl font-semibold hover:underline pb-2">{post.title}</h2>
 						</Link>
-						<p className="text-gray-600 mb-2">{post.summary}</p>
+						<p className="text-neutral-600 mb-2">{post.summary}</p>
 						<div className="flex flex-wrap gap-2 mb-2">
 							{/*
               REPLACE WITH LINK TO FIND BY TAGS
