@@ -1,63 +1,65 @@
 import "./globals.css";
-import { Rubik } from "next/font/google";
-import { getMessages } from "next-intl/server";
-import { NextIntlClientProvider } from "next-intl";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
-import { ThemeProvider } from "@/components/theme-provider";
-import { routing } from "@/i18n/routing";
-import { notFound } from "next/navigation";
+import {Rubik} from "next/font/google";
+import {getMessages} from "next-intl/server";
+import {NextIntlClientProvider} from "next-intl";
+import {SpeedInsights} from "@vercel/speed-insights/next";
+import {Analytics} from "@vercel/analytics/react";
+import {ThemeProvider} from "@/components/theme-provider";
+import {routing} from "@/i18n/routing";
+import {notFound} from "next/navigation";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer";
-import { Metadata } from "next";
+import {Metadata} from "next";
+import React from "react";
 
-const rubik = Rubik({ subsets: ["latin"] });
+const rubik = Rubik({subsets: ["latin"]});
 
 type ParamsType = Promise<{ locale: string }>;
 
 type MetadataLayoutMessages = {
-	title: string;
-	home: string;
+    title: string;
+    home: string;
 };
 
-export async function generateMetadata({ params }: { params: ParamsType }): Promise<Metadata> {
-	const locale = (await params).locale;
-	const messages = (await getMessages({ locale })) as { MetadataLayout: MetadataLayoutMessages };
-	const { title, home } = messages.MetadataLayout;
+export async function generateMetadata({params}: { params: ParamsType }): Promise<Metadata> {
+    const locale = (await params).locale;
+    const messages = (await getMessages({locale})) as { MetadataLayout: MetadataLayoutMessages };
+    const {title, home} = messages.MetadataLayout;
 
-	return {
-		title: `${title} | ${home}`,
-	};
+    return {
+        title: `${title} | ${home}`,
+    };
 }
+
 export default async function RootLayout({
-	children,
-	params,
-}: Readonly<{
-	children: React.ReactNode;
-	params: { locale: string };
+                                             children,
+                                             params,
+                                         }: Readonly<{
+    children: React.ReactNode;
+    params: { locale: string };
 }>) {
-	const { locale } = await params;
-	if (!routing.locales.includes(locale as "en" | "es")) {
-		notFound();
-	}
+    const {locale} = await params;
+    if (!routing.locales.includes(locale as "en" | "es")) {
+        notFound();
+    }
 
-	const messages = await getMessages();
+    const messages = await getMessages();
 
-	return (
-		<html lang={locale} suppressHydrationWarning>
-			<body className={`${rubik.className} antialiased`}>
-				<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-					<NextIntlClientProvider messages={messages}>
-						<main className="w-full">
-							<Navbar />
-							{children}
-							<Footer />
-						</main>
-					</NextIntlClientProvider>
-				</ThemeProvider>
-				<SpeedInsights />
-				<Analytics />
-			</body>
-		</html>
-	);
+    return (
+        <html lang={locale} suppressHydrationWarning>
+        <body className={`${rubik.className} antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <NextIntlClientProvider messages={messages}>
+                <main className="w-full">
+                    <Navbar/>
+                    {children}
+                    <Footer/>
+                </main>
+            </NextIntlClientProvider>
+        </ThemeProvider>
+        <SpeedInsights/>
+        <Analytics/>
+        </body>
+        </html>
+    );
 }

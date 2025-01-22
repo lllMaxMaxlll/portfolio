@@ -14,8 +14,8 @@ model Project {
   description  String
   technologies String
   image        String
-  githubLink   String? // Optional
-  websiteLink  String? // Optional
+  githubLink   String?
+  websiteLink  String?
   language     String // Language code (e.g., "en", "es")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -28,6 +28,7 @@ model Feedback {
   happiness Int
   comment   String?
   createdAt DateTime @default(now())
+  //   ipAddress String?  // Add this for rate limiting
 }
 
 model Post {
@@ -45,8 +46,8 @@ model Translation {
   postId   String
   language String // e.g., "en", "es"
   title    String
-  content  String  @db.Text // To handle long content
-  summary  String? @db.Text // Optional, for meta descriptions
+  content  String  @db.Text
+  summary  String? @db.Text
   post     Post    @relation(fields: [postId], references: [id], onDelete: Cascade)
 
   @@unique([postId, language]) // Ensure one translation per language per post
@@ -67,3 +68,14 @@ model TagOnPost {
 
   @@unique([postId, tagId]) // Prevent duplicate tag associations
 }
+
+// model Clap {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
+//   postId    String
+//   ipAddress String?  // Add this for rate limiting
+//   post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+
+//   @@index([postId])
+//   @@index([ipAddress, postId]) // Add index for rate limiting queries
+// }
