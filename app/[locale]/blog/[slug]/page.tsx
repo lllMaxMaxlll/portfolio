@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { markdownToHtml } from "@/lib/markdownToHtml";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 export async function generateStaticParams() {
 	const posts = await getAllPostForParams();
@@ -42,12 +43,12 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 				</Link>
 				<h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
 				<h2 className="text-neutral-600 dark:text-neutral-400 mb-2 text-lg">{translation.summary}</h2>
-				<span className="text-neutral-500 mb-8">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
-				<div className="flex flex-wrap gap-2 mb-4">
+				<span className="text-neutral-500 mb-8 text-sm">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
+				<div>
 					{post.tags.map(({ tag }) => (
-						<span key={tag.id} className="py-1 text-sm">
+						<Badge key={tag.id} className="me-1">
 							{tag.name}
-						</span>
+						</Badge>
 					))}
 				</div>
 				{post.image && <Image src={post.image} alt={translation.title} width={800} height={400} className="my-4 mx-auto" />}

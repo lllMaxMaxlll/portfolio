@@ -1,4 +1,5 @@
 import { getAllPosts } from "@/actions/blogPostActions";
+import { Badge } from "@/components/ui/badge";
 import { Metadata } from "next";
 import { getLocale, getMessages } from "next-intl/server";
 import Link from "next/link";
@@ -36,18 +37,17 @@ export default async function Blog() {
 							<h2 className="text-2xl font-semibold hover:underline pb-2">{post.title}</h2>
 						</Link>
 						<p className="text-neutral-600 mb-2">{post.summary}</p>
-						<div className="flex flex-wrap gap-2 mb-2">
+						<div className="my-2">
 							{/*
               REPLACE WITH LINK TO FIND BY TAGS
               */}
-
 							{post.tags.map((tag) => (
-								<span key={tag.id} className="py-1 text-sm cursor-pointer">
+								<Badge key={tag.id} variant="secondary" className="me-1">
 									{tag.name}
-								</span>
+								</Badge>
 							))}
 						</div>
-						<p className="text-gray-500">{new Date(post.createdAt).toLocaleDateString(locale)}</p>
+						<p className="text-gray-500 text-sm">{new Date(post.createdAt).toLocaleDateString(locale)}</p>
 					</article>
 				))}
 			</div>{" "}
