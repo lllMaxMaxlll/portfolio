@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import SwitcherLocale from "@/components/switcherLocale";
 import ThemeToggle from "@/components/theme-toggle";
 import { MobileNavbar } from "./mobileNavbar";
+import { ResumeButton } from "./resume-button";
 
 const Navbar = () => {
 	const pathname = usePathname();
@@ -52,6 +53,9 @@ const Navbar = () => {
 								<li>
 									<SwitcherLocale />
 								</li>
+								<li>
+									<ResumeButton />
+								</li>
 							</ul>
 						</nav>
 					</div>
@@ -73,6 +77,7 @@ const Navbar = () => {
 						</ul>
 						<div className="flex w-full justify-between gap-4 px-10">
 							<ThemeToggle />
+							<ResumeButton />
 							<SwitcherLocale />
 						</div>
 					</MobileNavbar>
