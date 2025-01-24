@@ -7,13 +7,13 @@ import { useTranslations } from "next-intl";
 const itemsFooter = [
 	{
 		icon: <GrMail size={"1.5em"} />,
-		link: "mailto:max.herr.88@gmail.com",
+		link: "mailto:info@maxherr.com",
 		color: " transition hover:fill-red-800 dark:hover:fill-red-400",
 		background: "bg-red-300/[0.8] dark:bg-red-800/[0.8]",
 	},
 	{
 		icon: <GrLinkedin size={"1.5em"} />,
-		link: "https://www.linkedin.com/in/maxherrwebdeveloper/",
+		link: "https://www.linkedin.com/in/maxherrwebdev/",
 		color: " transition hover:fill-sky-800 dark:hover:fill-sky-400",
 		background: "bg-sky-300/[0.8] dark:bg-sky-800/[0.8]",
 	},
