@@ -37,6 +37,7 @@ model Post {
   updatedAt    DateTime      @updatedAt
   slug         String        @unique
   image        String?
+  published    Boolean       @default(false)
   tags         TagOnPost[]
   translations Translation[]
 }

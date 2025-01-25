@@ -1,78 +1,78 @@
 "use server";
 
-import {db} from "@/lib/db";
+import { db } from "@/lib/db";
 // import { headers } from "next/headers"
-import {Post} from "@/types";
+import { Post } from "@/types";
 
 // const CLAP_LIMIT = 50 // Maximum claps per post per IP
 // const RATE_LIMIT_WINDOW = 60 * 1000 // 1 minute in milliseconds
 
 export const getAllPosts = async (locale: string): Promise<Post[]> => {
-    const posts = await db.post.findMany({
-        orderBy: {
-            createdAt: "desc",
-        },
-        include: {
-            translations: {
-                where: {
-                    language: locale,
-                },
-                select: {
-                    title: true,
-                    summary: true,
-                },
-            },
-            tags: {
-                include: {
-                    tag: true,
-                },
-            },
-        },
-    });
+	const posts = await db.post.findMany({
+		orderBy: {
+			createdAt: "desc",
+		},
+		where: {
+			published: true,
+		},
+		include: {
+			translations: {
+				where: {
+					language: locale,
+				},
+				select: {
+					title: true,
+					summary: true,
+				},
+			},
+			tags: {
+				include: {
+					tag: true,
+				},
+			},
+		},
+	});
 
-    if (!posts || posts.length === 0) throw new Error("No posts found")
+	if (!posts || posts.length === 0) throw new Error("No posts found");
 
-    return posts
-        .filter((post) => post.translations[0]?.title)
-        .map((post) => ({
-            id: post.id,
-            slug: post.slug,
-            title: post.translations[0].title,
-            summary: post.translations[0].summary,
-            image: post.image,
-            createdAt: post.createdAt,
-            tags: post.tags.map((t) => ({name: t.tag.name, id: t.tag.id})),
-        }));
-
+	return posts
+		.filter((post) => post.translations[0]?.title)
+		.map((post) => ({
+			id: post.id,
+			slug: post.slug,
+			title: post.translations[0].title,
+			summary: post.translations[0].summary,
+			image: post.image,
+			createdAt: post.createdAt,
+			tags: post.tags.map((t) => ({ name: t.tag.name, id: t.tag.id })),
+		}));
 };
 
 export const getAllPostForParams = async () => {
-    return db.post.findMany({
-        select: {
-            slug: true,
-            translations: {
-                select: {language: true},
-            },
-        },
-    });
-
+	return db.post.findMany({
+		select: {
+			slug: true,
+			translations: {
+				select: { language: true },
+			},
+		},
+	});
 };
 
 export const getPostBySlug = async (slug: string, locale: string) => {
-    return db.post.findUnique({
-        where: {slug},
-        include: {
-            translations: {
-                where: {language: locale},
-            },
-            tags: {
-                include: {
-                    tag: true,
-                },
-            },
-        },
-    });
-
+	return db.post.findUnique({
+		where: { slug },
+		include: {
+			translations: {
+				where: { language: locale },
+			},
+			tags: {
+				include: {
+					tag: true,
+				},
+			},
+		},
+	});
 };
 
 // export const getPostsByTag = async () => {
@@ -92,7 +92,6 @@ export const getPostBySlug = async (slug: string, locale: string) => {
 
 //         return null
 //     }
-
 
 //     // Check total claps from this IP for this post
 //     const totalClaps = await db.clap.count({
