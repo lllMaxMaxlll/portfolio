@@ -4,6 +4,7 @@ import { ArrowRight, ArrowLeft, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
+import { Badge } from "./badge";
 
 interface CarouselProps {
 	items: JSX.Element[];
@@ -189,7 +190,13 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 								{card.title}
 							</motion.p>
 							<motion.p layoutId={layout ? `category-${card.title}` : undefined} className="text-base font-medium text-neutral-100">
-								{card.technologies}
+								{card.technologies.split(",").map((e) => {
+									return (
+										<Badge key={e} variant="secondary" className="me-1">
+											{e}
+										</Badge>
+									);
+								})}
 							</motion.p>
 							<BlurImage
 								src={card.src}
