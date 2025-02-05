@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { getAllPostForParams, getPostBySlug } from "@/actions/blogPostActions";
 import { getLocale, getTranslations } from "next-intl/server";
-import { notFound } from "next/navigation";
 import { markdownToHtml } from "@/lib/markdownToHtml";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import {Metadata} from "next";
 
 export async function generateStaticParams() {
 	const posts = await getAllPostForParams();
@@ -18,6 +18,35 @@ export async function generateStaticParams() {
 	);
 }
 
+
+export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
+	const slug = (await params).slug;
+	const post = await getPostBySlug(slug, await getLocale());
+
+	if (!post) {
+		return { title: "Post Not Found", description: "The requested blog post does not exist." };
+	}
+
+	const translation = post.translations[0];
+	return {
+		title: `${translation.title} | Max Herr Blog`,
+		description: translation.summary,
+		openGraph: {
+			title: translation.title,
+			description: translation.summary || "",
+			url: `https://www.maxherr.com/blog/${post.slug}`,
+			images: [{ url: post.image || "/images/fallback.jpg" }],
+		},
+		twitter: {
+			card: "summary_large_image",
+			title: translation.title,
+			description: translation.summary || "",
+			images: [post.image || "/images/fallback.jpg"],
+		},
+	};
+};
+
+
 export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
 	const slug = (await params).slug;
 	const locale = await getLocale();
@@ -26,7 +55,15 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 	const post = await getPostBySlug(slug, locale);
 
 	if (!post || post.translations.length === 0) {
-		notFound();
+		return (
+			<div className="text-center py-16">
+				<h1 className="text-2xl font-semibold">Post Not Found</h1>
+				<p className="text-neutral-600 mt-2">The blog post you’re looking for does not exist or has been removed.</p>
+				<Link href={`/${locale}/blog`} className="text-blue-600 hover:underline mt-4">
+					Back to Blog
+				</Link>
+			</div>
+		);
 	}
 
 	const translation = post.translations[0];
@@ -45,13 +82,17 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 				<h2 className="text-neutral-600 dark:text-neutral-400 mb-2 text-lg">{translation.summary}</h2>
 				<span className="text-neutral-500 mb-8 text-sm">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
 				<div>
-					{post.tags.map(({ tag }) => (
-						<Badge key={tag.id} className="me-1">
-							{tag.name}
-						</Badge>
-					))}
+					{post.tags.length > 0 && (
+						<div>
+							{post.tags.map(({ tag }) => (
+								<Badge key={tag.id} className="me-1">
+									{tag.name}
+								</Badge>
+							))}
+						</div>
+					)}
 				</div>
-				{post.image && <Image src={post.image} alt={translation.title} width={800} height={400} className="my-4 mx-auto" />}
+				{post.image && <Image src={post.image} alt={translation.title || "Blog post image"} width={800} height={400}  className="my-4 mx-auto rounded-lg shadow-md max-w-full" />}
 				<div className="prose prose-neutral max-w-none dark:prose-invert py-2" dangerouslySetInnerHTML={{ __html: content }} />
 			</div>
 		</article>

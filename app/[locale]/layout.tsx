@@ -24,10 +24,33 @@ type MetadataLayoutMessages = {
 export async function generateMetadata({params}: { params: ParamsType }): Promise<Metadata> {
     const locale = (await params).locale;
     const messages = (await getMessages({locale})) as { MetadataLayout: MetadataLayoutMessages };
-    const {title, home} = messages.MetadataLayout;
+    const {title} = messages.MetadataLayout;
 
     return {
-        title: `${title} | ${home}`,
+        title: `${title} |  Full-Stack Developer Portfolio`,
+        description: "Explore Max Herr's portfolio showcasing projects, blog posts, and developer journey.",
+        openGraph: {
+            title: "Max Herr | Full-Stack Developer Portfolio",
+            description: "Discover Max Herr's journey as a developer and explore his projects and blog.",
+            url: "https://www.maxherr.com",
+            images: [
+                {
+                    url: "https://www.maxherr.com/images/portfolio-preview.jpeg",
+                    width: 1200,
+                    height: 630,
+                    alt: "Max Herr's Portfolio Preview",
+                },
+            ],
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: "Max Herr | Full-Stack Developer Portfolio",
+            description: "Discover Max Herr's journey as a developer and explore his projects and blog.",
+            images: ["https://www.maxherr.com/images/portfolio-preview.jpeg"],
+        },
+        alternates: {
+            canonical: "https://www.maxherr.com",
+        },
     };
 }
 
