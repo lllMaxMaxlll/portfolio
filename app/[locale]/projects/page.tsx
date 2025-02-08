@@ -29,7 +29,7 @@ export default async function ProjectsCarousel() {
 	const projects = await getProjects();
 
 	if (!projects.length) {
-		return  notFound();
+		return notFound();
 	}
 
 	const cards = projects.map((project, index) => (
@@ -38,7 +38,8 @@ export default async function ProjectsCarousel() {
 			card={{
 				title: project.title,
 				technologies: project.technologies,
-				src: project.image,
+				images: project.images,
+				src: project.images[0],
 				content: (
 					<div className="text-primary-foreground dark:text-primary">
 						<p>{project.description}</p>

@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { Badge } from "./badge";
+import ProjectImagesCarousel from "../projects-images-carousel";
 
 interface CarouselProps {
 	items: JSX.Element[];
@@ -15,6 +16,7 @@ type Card = {
 	src: string;
 	title: string;
 	technologies: string;
+	images: string[];
 	content: React.ReactNode;
 };
 
@@ -189,7 +191,7 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 								className="text-2xl md:text-5xl font-semibold text-neutral-100 my-4">
 								{card.title}
 							</motion.p>
-							<motion.p layoutId={layout ? `category-${card.title}` : undefined} className="text-base font-medium text-neutral-100">
+							<motion.div layoutId={layout ? `category-${card.title}` : undefined} className="text-base font-medium text-neutral-100">
 								{card.technologies.split(",").map((e) => {
 									return (
 										<Badge key={e} variant="secondary" className="me-1">
@@ -197,14 +199,9 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 										</Badge>
 									);
 								})}
-							</motion.p>
-							<BlurImage
-								src={card.src}
-								alt={`${card.title} Screenshot`}
-								className="my-6 w-full h-auto rounded-xl object-cover "
-								width={800}
-								height={450}
-							/>
+							</motion.div>
+							<ProjectImagesCarousel images={card.images} />
+
 							<>{card.content}</>
 						</motion.div>
 					</div>

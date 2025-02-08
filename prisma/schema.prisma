@@ -13,7 +13,7 @@ model Project {
   title        String
   description  String
   technologies String
-  image        String
+  images       String[]
   githubLink   String?
   websiteLink  String?
   language     String // Language code (e.g., "en", "es")
