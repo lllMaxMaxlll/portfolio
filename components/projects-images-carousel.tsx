@@ -27,8 +27,8 @@ export default function ProjectImagesCarousel({ images, className }: Props) {
 					</CarouselItem>
 				))}
 			</CarouselContent>
-			<CarouselPrevious />
-			<CarouselNext />
+			<CarouselPrevious className="text-neutral-100" />
+			<CarouselNext className="text-neutral-100" />
 		</Carousel>
 	);
 }
