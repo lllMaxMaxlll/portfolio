@@ -1,0 +1,223 @@
+---
+title: "The most popular React Design Patterns and how to use them"
+summary: "React is an incredibly flexible library, but without a solid structure, our applications can become a nightmare to maintain. In this post, we’ll explore the most popular design patterns in React, from Container/Presenter, Render Props, to Custom Hooks, with practical examples to help you implement them in your projects and make them more scalable and efficient."
+date: "2025-01-31"
+image: "/images/blog-posts-images/popular-react-design-patterns.jpeg"
+tags: [Javascript, Frontend, Clean Code, React]
+---
+
+If you’ve ever worked on a large React application, you’ve probably encountered messy, hard-to-maintain code. 😵‍💫
+
+The solution? Design patterns—proven methods that help us write cleaner, reusable, and scalable code. In this post, we’ll dive into the most essential design patterns in React, with practical examples so you can implement them in your projects.
+
+---
+
+### **Container/Presenter – Separating Logic from UI 🎭**
+
+One of the most classic React patterns is Container/Presenter, which separates logic from presentation.
+
+**🔥 When to use it?**
+• When a component has too much logic and re-renders frequently.
+• To separate the data layer from the UI layer for better reusability.
+
+**❌ Before (Mixed Logic and UI 😖)**
+
+```typescript
+function UserProfile({ userId }: { userId: number }) {
+	const [user, setUser] = React.useState<{ name: string; email: string } | null>(null);
+
+	React.useEffect(() => {
+		fetch(`https://api.example.com/users/${userId}`)
+			.then((res) => res.json())
+			.then((data) => setUser(data));
+	}, [userId]);
+
+	if (!user) return <p>Loading...</p>;
+	return (
+		<h1>
+			{user.name} ({user.email})
+		</h1>
+	);
+}
+```
+
+Here, the component handles both data fetching and UI, making it harder to reuse.
+
+**✅ After (Applying Container/Presenter 🤩)**
+
+### **Presenter Component (Only Handles UI):**
+
+```typescript
+function UserProfilePresenter({ user }: { user: { name: string; email: string } }) {
+  return <h1>{user.name} ({user.email})</h1>;
+}
+
+Container Component (Handles Logic):
+
+function UserProfileContainer({ userId }: { userId: number }) {
+  const [user, setUser] = React.useState<{ name: string; email: string } | null>(null);
+
+  React.useEffect(() => {
+    fetch(`https://api.example.com/users/${userId}`)
+      .then((res) => res.json())
+      .then((data) => setUser(data));
+  }, [userId]);
+
+  if (!user) return <p>Loading...</p>;
+  return <UserProfilePresenter user={user} />;
+}
+```
+
+Now, UserProfilePresenter only handles UI, while UserProfileContainer manages logic.
+
+---
+
+### **Render Props – Sharing Logic Dynamically 🔄**
+
+**🔥 When to use it?**
+• When you want to share logic across components without using HOCs.
+• When child components need control over what gets rendered.
+
+**❌ Before (Duplicated Logic in Multiple Components 🤯)**
+
+```typescript
+function MouseTracker() {
+	const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+	React.useEffect(() => {
+		const handleMouseMove = (event: MouseEvent) => {
+			setPosition({ x: event.clientX, y: event.clientY });
+		};
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => window.removeEventListener("mousemove", handleMouseMove);
+	}, []);
+
+	return (
+		<p>
+			Mouse Position: {position.x}, {position.y}
+		</p>
+	);
+}
+```
+
+The logic here is tied to the component, making it less reusable.
+
+**✅ After (Using Render Props 💡)**
+
+```typescript
+function MouseTracker({ render }: { render: (pos: { x: number; y: number }) => JSX.Element }) {
+	const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+	React.useEffect(() => {
+		const handleMouseMove = (event: MouseEvent) => {
+			setPosition({ x: event.clientX, y: event.clientY });
+		};
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => window.removeEventListener("mousemove", handleMouseMove);
+	}, []);
+
+	return render(position);
+}
+
+// Usage
+function App() {
+	return (
+		<MouseTracker
+			render={(position) => (
+				<h1>
+					Mouse is at {position.x}, {position.y}
+				</h1>
+			)}
+		/>
+	);
+}
+```
+
+Now, MouseTracker doesn’t decide how to render the position, leaving control to the parent component.
+
+---
+
+### **Custom Hooks – Encapsulating Reusable Logic 🪝**
+
+Custom Hooks are a modern React feature that allows reusing state logic without needing HOCs or Render Props.
+
+**🔥 When to use it?**
+• When useState and useEffect are repeated in multiple components.
+• To separate business logic from UI components.
+
+**❌ Before (Duplicated Logic in Multiple Components 🤦‍♂️)**
+
+```typescript
+function UserList() {
+	const [users, setUsers] = React.useState([]);
+
+	React.useEffect(() => {
+		fetch("https://api.example.com/users")
+			.then((res) => res.json())
+			.then((data) => setUsers(data));
+	}, []);
+
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+If another component needs user data, you’ll repeat the same logic.
+
+**✅ After (With a Custom Hook 😍)**
+
+```typescript
+function useFetch<T>(url: string): T | null {
+	const [data, setData] = React.useState<T | null>(null);
+
+	React.useEffect(() => {
+		fetch(url)
+			.then((res) => res.json())
+			.then((data) => setData(data));
+	}, [url]);
+
+	return data;
+}
+
+// Using the Hook in Multiple Components
+function UserList() {
+	const users = useFetch<{ id: number; name: string }[]>("https://api.example.com/users");
+	if (!users) return <p>Loading...</p>;
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+
+function ProductList() {
+	const products = useFetch<{ id: number; name: string }[]>("https://api.example.com/products");
+	if (!products) return <p>Loading...</p>;
+	return (
+		<ul>
+			{products.map((product) => (
+				<li key={product.id}>{product.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+Now, useFetch encapsulates the API fetching logic, making it reusable across multiple components.
+
+---
+
+### **Conclusion**
+
+These design patterns will help you write cleaner, more reusable, and scalable code in React. 🚀
+
+- **Container/Presenter** → Separates logic from UI.
+- **Render Props** → Allows sharing logic between components dynamically.
+- **Custom Hooks** → Encapsulates reusable state logic.

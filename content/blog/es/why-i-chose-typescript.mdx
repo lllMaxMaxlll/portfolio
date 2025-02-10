@@ -1,0 +1,67 @@
+---
+title: "Por qué elegí TypeScript (y por qué tú también deberías hacerlo)"
+summary: "Descubre por qué TypeScript es una herramienta imprescindible para desarrolladores."
+date: "2025-01-21"
+image: "/images/blog-posts-images/why-i-chose-typescript.jpeg"
+tags: [Programming, Typescript]
+---
+
+La primera vez que escuché sobre TypeScript pensé: “Genial, otra cosa más que tengo que aprender, como si JavaScript no fuera ya lo suficientemente confuso”. No estaba equivocado, pero vaya que estaba equivocado sobre no querer aprenderlo. TypeScript ha sido el superhéroe inesperado en mi camino como desarrollador, salvándome de incontables bugs, errores desesperantes y crisis existenciales a medianoche (bueno, la mayoría de ellas).
+
+Hablemos de por qué TypeScript no es solo una herramienta, sino el mejor amigo de un desarrollador, y por qué deberías agregarlo a tu arsenal.
+
+### JavaScript, pero con Superpoderes
+
+Imagina que JavaScript es una bicicleta. TypeScript es esa misma bicicleta, pero con rueditas de entrenamiento, bocina y propulsores a chorro. Es JavaScript, pero con características adicionales, específicamente: tipado estático.
+
+El tipado estático puede sonar aburrido, pero es como etiquetar todas tus cajas cuando te mudas. Claro, podrías adivinar dónde están los platos (spoiler: en la caja marcada como “cosas random”), pero ¿no sería más fácil si todo estuviera claramente identificado? TypeScript te dice exactamente qué son tus variables, funciones y objetos, y eso te ahorra sorpresas desagradables.
+
+### Dile adiós a “Undefined is not a function”
+
+Todos hemos estado ahí. Estás emocionado por una nueva funcionalidad que acabas de programar, recargas la página y ¡bam!: “undefined is not a function”. Facepalm.
+
+TypeScript te ayuda a evitar estos momentos de frustración total. Detecta errores antes de que tu código siquiera se ejecute. Olvídate del “programa ahora, depura después”. Con TypeScript, es más como “depura ahora y ejecuta con confianza después”.
+
+Aquí tienes un ejemplo:
+
+```typescript
+function sumaNumeros(a: number, b: number): number {
+	return a + b;
+}
+
+sumaNumeros(5, "10"); // ¡Error! TypeScript no te deja pasar esto.
+```
+
+En JavaScript, esto podría ejecutarse y darte “510” en lugar de 15. Con TypeScript, te lanza un error más rápido de lo que puedes decir: “¿Por qué esto no funciona?”.
+
+### Tu futuro yo te lo agradecerá
+
+¿Alguna vez has intentado volver a leer código que escribiste hace seis meses? Es como tratar de descifrar jeroglíficos antiguos. Con TypeScript, tu código se documenta solo. No tienes que adivinar qué hace una función o qué datos espera, porque TypeScript te lo dice.
+
+```typescript
+interface Usuario {
+	nombre: string;
+	edad: number;
+	esAdmin: boolean;
+}
+
+function saludar(usuario: Usuario): string {
+	return `¡Hola, ${usuario.nombre}!`;
+}
+```
+
+Ahora, cualquier versión futura de ti (o tus compañeros de equipo) puede entender al instante cómo funciona la función saludar y qué tipo de datos necesita. Nada de variables misteriosas ni juegos de adivinanza. Solo código limpio y legible.
+
+### El mercado laboral ama TypeScript
+
+Seamos realistas. TypeScript se ve genial en tu currículum. Muchas empresas modernas lo usan en sus stacks tecnológicos (hola, Google, Microsoft e incluso startups), así que conocer TypeScript te hace destacar. Además, muestra que te importa escribir código mantenible y resistente a errores.
+
+### No es tan difícil de aprender (en serio)
+
+¿La mejor parte? Si ya sabes JavaScript, ya tienes la mitad del camino recorrido. TypeScript se construye sobre JavaScript, así que no estás empezando desde cero. Y una vez que veas los beneficios, te preguntarás cómo has podido programar sin él.
+
+### Para terminar: TypeScript FTW 🚀
+
+Elegir TypeScript como desarrollador junior fue como pasar de un teléfono de tapa a un smartphone. Al principio parecía innecesario (¿por qué arreglar algo que no está roto?), pero ahora no puedo imaginar volver atrás. No se trata solo de detectar errores; se trata de programar con confianza, escribir código más limpio y llevar tus habilidades al siguiente nivel.
+
+Así que, si todavía estás dudando, dale una oportunidad a TypeScript. Tu yo del futuro (y tu equipo) te lo agradecerán. Además, es una excelente manera de impresionar a tus amigos desarrolladores. ¿Quién no ama ser esa persona que sabe la diferencia entre any y unknown?

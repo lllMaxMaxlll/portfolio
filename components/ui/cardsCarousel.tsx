@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState, createContext, useContext, JSX } from "react";
 import { ArrowRight, ArrowLeft, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Image, { ImageProps } from "next/image";
 import { Badge } from "./badge";
 import ProjectImagesCarousel from "../projects-images-carousel";
@@ -15,7 +15,7 @@ interface CarouselProps {
 type Card = {
 	src: string;
 	title: string;
-	technologies: string;
+	tags: string[];
 	images: string[];
 	content: React.ReactNode;
 };
@@ -89,25 +89,9 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
 					<div className={cn("flex flex-row justify-start gap-4 pl-4", "max-w-7xl mx-auto")}>
 						{items.map((item, index) => (
-							<motion.div
-								initial={{
-									opacity: 0,
-									y: 20,
-								}}
-								animate={{
-									opacity: 1,
-									y: 0,
-									transition: {
-										duration: 0.5,
-										delay: 0.2 * index,
-										ease: "easeOut",
-										once: true,
-									},
-								}}
-								key={"card" + index}
-								className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl">
+							<div key={"card" + index} className="last:pr-[5%] md:last:pr-[33%]  rounded-3xl">
 								{item}
-							</motion.div>
+							</div>
 						))}
 					</div>
 				</div>
@@ -130,7 +114,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 	);
 };
 
-export const Card = ({ card, index, layout = false }: { card: Card; index: number; layout?: boolean }) => {
+export const Card = ({ card, index }: { card: Card; index: number }) => {
 	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	const { onCardClose, currentIndex } = useContext(CarouselContext);
 	const [open, setOpen] = useState(false);
@@ -168,59 +152,41 @@ export const Card = ({ card, index, layout = false }: { card: Card; index: numbe
 			<AnimatePresence>
 				{open && (
 					<div className="fixed inset-0 h-screen z-50 overflow-auto">
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
-						/>
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							ref={containerRef}
-							layoutId={layout ? `card-${card.title}` : undefined}
-							className="max-w-5xl mx-auto  h-fit z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative">
+						<div className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0" />
+						<div ref={containerRef} className="max-w-5xl mx-auto  h-fit z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative">
 							<button
 								className="sticky top-4 h-8 w-8 right-0 ml-auto rounded-full flex items-center justify-center text-neutral-100"
 								onClick={handleClose}>
 								<X className="h-6 w-6" />
 							</button>
-							<motion.p
-								layoutId={layout ? `title-${card.title}` : undefined}
-								className="text-2xl md:text-5xl font-semibold text-neutral-100 my-4">
-								{card.title}
-							</motion.p>
-							<motion.div layoutId={layout ? `category-${card.title}` : undefined} className="text-base font-medium text-neutral-100">
-								{card.technologies.split(",").map((e) => {
+							<p className="text-2xl md:text-5xl font-semibold text-neutral-100 my-4">{card.title}</p>
+							<div className="text-base font-medium text-neutral-100">
+								{card.tags.map((tag) => {
 									return (
-										<Badge key={e} variant="secondary" className="me-1">
-											{e}
+										<Badge key={tag} variant="secondary" className="me-1">
+											{tag}
 										</Badge>
 									);
 								})}
-							</motion.div>
+							</div>
 							<ProjectImagesCarousel images={card.images} />
 
 							<>{card.content}</>
-						</motion.div>
+						</div>
 					</div>
 				)}
 			</AnimatePresence>
-			<motion.button
-				layoutId={layout ? `card-${card.title}` : undefined}
+			<button
 				onClick={handleOpen}
 				className="rounded-3xl h-80 w-56 md:h-96 md:w-96 overflow-hidden flex flex-col items-start justify-start relative z-10 hover:-translate-y-2 transition">
 				<div className="absolute h-full top-0 inset-x-0 bg-gradient-to-b from-neutral-900/70 via-transparent to-transparent z-30 pointer-events-none" />
 				<div className="relative z-40 p-8">
-					<motion.p
-						layoutId={layout ? `title-${card.title}` : undefined}
-						className="text-neutral-100 text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2">
+					<p className="text-neutral-100 text-xl md:text-3xl font-semibold max-w-xs text-left [text-wrap:balance] font-sans mt-2">
 						{card.title}
-					</motion.p>
+					</p>
 				</div>
 				<BlurImage src={card.src} alt={card.title} sizes="50%" fill className="object-cover absolute z-10 inset-0" />
-			</motion.button>
+			</button>
 		</>
 	);
 };

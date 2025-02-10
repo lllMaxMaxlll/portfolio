@@ -1,0 +1,228 @@
+---
+title: "How to write clean code: Best practices for readable and maintainable projects"
+summary: "Learn how to write clean, maintainable code using principles like DRY, KISS, and SOLID, with practical examples in TypeScript and React. We’ll tackle real-world scenarios every developer faces. Turn your code into something others will love to read (and maintain)!"
+date: "2025-01-25"
+image: "/images/blog-posts-images/how-to-write-clean-code-best-practices-for-readable-and-maintainable-projects.jpeg"
+tags: [Learning to Code, Clean Code, Coding tips]
+---
+
+Writing code is easy. Writing clean code is like trying to tame a cat: it seems impossible, but with the right techniques, you can do it without ending up with scratches on your face (or your ego). Have you ever come back to a project after a few months and thought, "Who wrote this mess?" only to realize it was you? We’ve all been there. In this post, I’ll show you how to apply principles like DRY, KISS, and SOLID in real-world situations using TypeScript and React. Let’s cook up some code that will make your teammates drool!
+
+---
+
+### **The DRY principle: Don’t Repeat Yourself (because you’re Better than that)**
+
+**What does it mean?** DRY (Don’t Repeat Yourself) is like telling your code, “Hey, don’t be repetitive—it’s boring.” If you find yourself copying and pasting the same code in multiple places, it’s time to refactor.
+
+**Scenario:** You have two components that fetch data for users and products, but the code is almost identical.
+
+**Before:**
+
+```typescript
+function UserList() {
+	const [users, setUsers] = useState<User[]>([]);
+
+	useEffect(() => {
+		fetch("/api/users")
+			.then((response) => response.json())
+			.then((data) => setUsers(data));
+	}, []);
+
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+
+function ProductList() {
+	const [products, setProducts] = useState<Product[]>([]);
+
+	useEffect(() => {
+		fetch("/api/products")
+			.then((response) => response.json())
+			.then((data) => setProducts(data));
+	}, []);
+
+	return (
+		<ul>
+			{products.map((product) => (
+				<li key={product.id}>{product.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+**After:**
+
+```typescript
+function useFetchData<T>(url: string) {
+	const [data, setData] = useState<T[]>([]);
+
+	useEffect(() => {
+		fetch(url)
+			.then((response) => response.json())
+			.then((data) => setData(data));
+	}, [url]);
+
+	return data;
+}
+
+function UserList() {
+	const users = useFetchData<User>("/api/users");
+
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+
+function ProductList() {
+	const products = useFetchData<Product>("/api/products");
+
+	return (
+		<ul>
+			{products.map((product) => (
+				<li key={product.id}>{product.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+**Why is it better?** You reduce duplication and make the code easier to maintain. Plus, if you need to change the fetch logic, you only do it in one place.
+
+---
+
+### **The KISS principle: Keep It Simple, Stupid (but don’t be rude)**
+
+**What does it mean?** KISS (Keep It Simple, Stupid) is about avoiding unnecessary complexity. Simple code is like a good pizza: it doesn’t need a thousand ingredients to be amazing.
+
+**Scenario:** You have a function that validates a form, but it’s full of redundant conditions.
+
+**Before:**
+
+```typescript
+function validateForm(form: { email: string; password: string }) {
+	if (form.email === "") {
+		return false;
+	}
+	if (form.password === "") {
+		return false;
+	}
+	if (form.password.length < 8) {
+		return false;
+	}
+	if (!form.email.includes("@")) {
+		return false;
+	}
+	return true;
+}
+```
+
+**After:**
+
+```typescript
+function validateForm(form: { email: string; password: string }) {
+	const isEmailValid = form.email.includes("@");
+	const isPasswordValid = form.password.length >= 8;
+
+	return isEmailValid && isPasswordValid;
+}
+```
+
+**Why is it better?** You simplify the logic and make the code clearer and easier to understand. Plus, you avoid your teammates asking, “Why are there so many `if` statements?”
+
+---
+
+### **The SOLID principle: Solid Object-Oriented Design**
+
+**What does it mean?** SOLID is a set of principles that help you write cleaner, more maintainable object-oriented code. Let’s look at the S in SOLID: Single Responsibility Principle.
+
+**Before:**
+
+```typescript
+function UserProfile({ user }: { user: { name: string; email: string; activities: string[] } }) {
+	return (
+		<div>
+			<h1>{user.name}</h1>
+			<p>{user.email}</p>
+			<ul>
+				{user.activities.map((activity) => (
+					<li key={activity}>{activity}</li>
+				))}
+			</ul>
+		</div>
+	);
+}
+```
+
+**After:**
+
+```typescript
+function UserInfo({ user }: { user: { name: string; email: string } }) {
+	return (
+		<div>
+			<h1>{user.name}</h1>
+			<p>{user.email}</p>
+		</div>
+	);
+}
+
+function UserActivities({ activities }: { activities: string[] }) {
+	return (
+		<ul>
+			{activities.map((activity) => (
+				<li key={activity}>{activity}</li>
+			))}
+		</ul>
+	);
+}
+
+function UserProfile({ user }: { user: { name: string; email: string; activities: string[] } }) {
+	return (
+		<div>
+			<UserInfo user={{ name: user.name, email: user.email }} />
+			<UserActivities activities={user.activities} />
+		</div>
+	);
+}
+```
+
+**Why is it better?** Each component now has a single responsibility, making it easier to update and test.
+
+---
+
+### **Meaningful names: say what you do and do what you say**
+
+**What does it mean?** Bad variable names are like bad jokes—confusing and painful. Use names that describe what something is or does.
+
+**Before:**
+
+```typescript
+function calc(cart: Cart) {
+	return cart.items.reduce((total, item) => total + item.price, 0);
+}
+```
+
+**After:**
+
+```typescript
+function calculateTotalPrice(cart: Cart) {
+	return cart.items.reduce((total, item) => total + item.price, 0);
+}
+```
+
+**Why is it better?** The descriptive name makes the code self-explanatory. Plus, you avoid your teammates asking, “What does `calc` do?”
+
+---
+
+### **Conclusion:**
+
+Writing clean code isn’t just a best practice—it’s a way to respect your teammates (and your future self). By following principles like DRY, KISS, and SOLID, and paying attention to details like meaningful names and consistent formatting, you can turn your code into something other developers will love to work with. So the next time you write a line of code, ask yourself: “Is this clean and maintainable?” Your team (and your future self) will thank you.

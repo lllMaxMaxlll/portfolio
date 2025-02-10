@@ -1,11 +1,17 @@
-import Image from "next/image";
-import { getAllPostForParams, getPostBySlug } from "@/actions/blogPostActions";
+import { getAllPostForParams } from "@/actions/blogPostActions";
 import { getLocale, getTranslations } from "next-intl/server";
-import { markdownToHtml } from "@/lib/markdownToHtml";
-import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Link } from "next-view-transitions";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import {Metadata} from "next";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { getMDXContent } from "@/lib/mdx";
+import { Metadata } from "next";
+
+const BLOG_DIR = path.join(process.cwd(), "content/blog");
 
 export async function generateStaticParams() {
 	const posts = await getAllPostForParams();
@@ -18,56 +24,38 @@ export async function generateStaticParams() {
 	);
 }
 
-
 export const generateMetadata = async ({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> => {
+	const locale = await getLocale();
 	const slug = (await params).slug;
-	const post = await getPostBySlug(slug, await getLocale());
 
-	if (!post) {
-		return { title: "Post Not Found", description: "The requested blog post does not exist." };
-	}
+	const filePath = path.join(BLOG_DIR, locale, `${slug}.mdx`);
+	if (!fs.existsSync(filePath)) return {};
 
-	const translation = post.translations[0];
+	const fileContent = fs.readFileSync(filePath, "utf-8");
+	const { data } = matter(fileContent);
+
 	return {
-		title: `${translation.title} | Max Herr Blog`,
-		description: translation.summary,
+		title: data.title,
+		description: data.summary,
 		openGraph: {
-			title: translation.title,
-			description: translation.summary || "",
-			url: `https://www.maxherr.com/blog/${post.slug}`,
-			images: [{ url: post.image || "/images/fallback.jpg" }],
-		},
-		twitter: {
-			card: "summary_large_image",
-			title: translation.title,
-			description: translation.summary || "",
-			images: [post.image || "/images/fallback.jpg"],
+			title: data.title,
+			description: data.summary,
+			images: data.image ? [{ url: data.image, width: 800, height: 400, alt: data.title }] : [],
 		},
 	};
 };
 
-
-export default async function Post({ params }: { params: Promise<{ slug: string }> }) {
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
 	const slug = (await params).slug;
 	const locale = await getLocale();
 	const t = await getTranslations("Blog");
 
-	const post = await getPostBySlug(slug, locale);
+	const filePath = path.join(BLOG_DIR, locale, `${slug}.mdx`);
+	if (!fs.existsSync(filePath)) return notFound();
 
-	if (!post || post.translations.length === 0) {
-		return (
-			<div className="text-center py-16">
-				<h1 className="text-2xl font-semibold">Post Not Found</h1>
-				<p className="text-neutral-600 mt-2">The blog post you’re looking for does not exist or has been removed.</p>
-				<Link href={`/${locale}/blog`} className="text-blue-600 hover:underline mt-4">
-					Back to Blog
-				</Link>
-			</div>
-		);
-	}
-
-	const translation = post.translations[0];
-	const content = await markdownToHtml(translation.content);
+	const fileContent = fs.readFileSync(filePath, "utf-8");
+	const { data, content } = matter(fileContent);
+	const mdxContent = await getMDXContent(content);
 
 	return (
 		<article className="px-4 py-6 md:px-6 md:py-12 lg:py-16 min-h-[100dvh]">
@@ -78,22 +66,24 @@ export default async function Post({ params }: { params: Promise<{ slug: string 
 					<ArrowLeft className="w-4 h-4 mr-2" />
 					{t("backButton")}
 				</Link>
-				<h1 className="text-4xl font-bold mb-4">{translation.title}</h1>
-				<h2 className="text-neutral-600 dark:text-neutral-400 mb-2 text-lg">{translation.summary}</h2>
-				<span className="text-neutral-500 mb-8 text-sm">{new Date(post.createdAt).toLocaleDateString(locale)}</span>
+				<h1 className="text-4xl font-bold mb-4">{data.title}</h1>
+				<h2 className="text-neutral-600 dark:text-neutral-400 mb-2 text-lg">{data.summary}</h2>
+				<span className="text-neutral-500 mb-8 text-sm">{new Date(data.date).toLocaleDateString(locale)}</span>
 				<div>
-					{post.tags.length > 0 && (
-						<div>
-							{post.tags.map(({ tag }) => (
-								<Badge key={tag.id} className="me-1">
-									{tag.name}
-								</Badge>
-							))}
-						</div>
-					)}
+					{data.tags.map((tag: string) => (
+						<Badge key={tag} className="me-1">
+							{tag}
+						</Badge>
+					))}
 				</div>
-				{post.image && <Image src={post.image} alt={translation.title || "Blog post image"} width={800} height={400}  className="my-4 mx-auto rounded-lg shadow-md max-w-full" />}
-				<div className="prose prose-neutral max-w-none dark:prose-invert py-2" dangerouslySetInnerHTML={{ __html: content }} />
+				<Image
+					src={data.image}
+					alt={data.title || "Blog post image"}
+					width={800}
+					height={400}
+					className="my-4 mx-auto rounded-lg shadow-md max-w-full"
+				/>
+				{mdxContent.content}
 			</div>
 		</article>
 	);

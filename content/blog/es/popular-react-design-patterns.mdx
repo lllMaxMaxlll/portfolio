@@ -1,0 +1,229 @@
+---
+title: "Los Patrones de Diseño Más Populares en React y Cómo Aplicarlos"
+summary: "React es una biblioteca increíblemente flexible, pero sin una buena estructura, nuestras aplicaciones pueden volverse difíciles de mantener. En este post, exploramos los patrones de diseño más populares en React, desde Container/Presenter, Render Props, hasta Hooks personalizados, con ejemplos prácticos para que puedas aplicarlos en tus proyectos y hacerlos más escalables y eficientes."
+date: "2025-01-31"
+image: "/images/blog-posts-images/popular-react-design-patterns.jpeg"
+tags: [Javascript, Frontend, Clean Code, React]
+---
+
+Si alguna vez has trabajado en una aplicación React grande, seguro te has encontrado con un código desordenado y difícil de mantener. 😵‍💫
+
+La solución a este problema está en usar patrones de diseño, que nos ayudan a escribir código más limpio, reutilizable y escalable. En este post, exploraremos los patrones de diseño más utilizados en React con ejemplos prácticos para que puedas implementarlos en tus proyectos.
+
+---
+
+### **Container/Presenter – Separando Lógica y UI 🎭**
+
+Uno de los patrones más clásicos en React es Container/Presenter, donde separamos la lógica de la presentación.
+
+**🔥 Cuándo usarlo**
+• Cuando un componente tiene demasiada lógica y re-renderiza frecuentemente.
+• Para separar la capa lógica de la capa de presentación y mejorar la reutilización.
+
+**❌ Antes (Componente con Lógica y UI Mezcladas 😖)**
+
+```typescript
+function UserProfile({ userId }: { userId: number }) {
+	const [user, setUser] = React.useState<{ name: string; email: string } | null>(null);
+
+	React.useEffect(() => {
+		fetch(`https://api.example.com/users/${userId}`)
+			.then((res) => res.json())
+			.then((data) => setUser(data));
+	}, [userId]);
+
+	if (!user) return <p>Cargando...</p>;
+	return (
+		<h1>
+			{user.name} ({user.email})
+		</h1>
+	);
+}
+```
+
+Aquí, el componente maneja la lógica de datos y la UI, lo que hace difícil la reutilización.
+
+**✅ Después (Aplicando Container/Presenter 🤩)**
+
+Componente de Presentación:
+
+```typescript
+function UserProfilePresenter({ user }: { user: { name: string; email: string } }) {
+	return (
+		<h1>
+			{user.name} ({user.email})
+		</h1>
+	);
+}
+```
+
+Componente Contenedor:
+
+```typescript
+function UserProfileContainer({ userId }: { userId: number }) {
+	const [user, setUser] = React.useState<{ name: string; email: string } | null>(null);
+
+	React.useEffect(() => {
+		fetch(`https://api.example.com/users/${userId}`)
+			.then((res) => res.json())
+			.then((data) => setUser(data));
+	}, [userId]);
+
+	if (!user) return <p>Cargando...</p>;
+	return <UserProfilePresenter user={user} />;
+}
+```
+
+Ahora, UserProfilePresenter solo maneja la UI, mientras que UserProfileContainer se encarga de la lógica.
+
+---
+
+### **Render Props – Compartiendo Lógica de Forma Dinámica 🔄**
+
+**🔥 Cuándo usarlo**
+• Cuando quieres compartir lógica entre componentes sin usar HOCs.
+• Cuando necesitas dar control al componente padre sobre lo que se renderiza.
+
+**❌ Antes (Código Duplicado en Componentes Diferentes 🤯)**
+
+```typescript
+function MouseTracker() {
+	const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+	React.useEffect(() => {
+		const handleMouseMove = (event: MouseEvent) => {
+			setPosition({ x: event.clientX, y: event.clientY });
+		};
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => window.removeEventListener("mousemove", handleMouseMove);
+	}, []);
+
+	return (
+		<p>
+			Posición del Mouse: {position.x}, {position.y}
+		</p>
+	);
+}
+```
+
+Aquí, la lógica de rastreo del mouse está acoplada al componente.
+
+**✅ Después (Aplicando Render Props 💡)**
+
+```typescript
+function MouseTracker({ render }: { render: (pos: { x: number; y: number }) => JSX.Element }) {
+	const [position, setPosition] = React.useState({ x: 0, y: 0 });
+
+	React.useEffect(() => {
+		const handleMouseMove = (event: MouseEvent) => {
+			setPosition({ x: event.clientX, y: event.clientY });
+		};
+		window.addEventListener("mousemove", handleMouseMove);
+		return () => window.removeEventListener("mousemove", handleMouseMove);
+	}, []);
+
+	return render(position);
+}
+
+// Uso
+function App() {
+	return (
+		<MouseTracker
+			render={(position) => (
+				<h1>
+					El mouse está en {position.x}, {position.y}
+				</h1>
+			)}
+		/>
+	);
+}
+```
+
+Ahora, MouseTracker no decide cómo renderizar los datos, sino que le da el control al componente padre.
+
+---
+
+### **Hooks Personalizados – Encapsulando Lógica Reutilizable 🪝**
+
+Los Custom Hooks son una forma moderna de React para reutilizar lógica de estado sin necesidad de HOCs o Render Props.
+
+**🔥 Cuándo usarlo**
+• Cuando un mismo useState y useEffect se repiten en múltiples componentes.
+• Para separar la lógica de negocio de la UI.
+
+**❌ Antes (Misma Lógica en Múltiples Componentes 🤦‍♂️)**
+
+```typescript
+function UserList() {
+	const [users, setUsers] = React.useState([]);
+
+	React.useEffect(() => {
+		fetch("https://api.example.com/users")
+			.then((res) => res.json())
+			.then((data) => setUsers(data));
+	}, []);
+
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+Si tienes otro componente que también necesita usuarios, repetirás la misma lógica.
+
+**✅ Después (Con Custom Hook 😍)**
+
+```typescript
+function useFetch<T>(url: string): T | null {
+	const [data, setData] = React.useState<T | null>(null);
+
+	React.useEffect(() => {
+		fetch(url)
+			.then((res) => res.json())
+			.then((data) => setData(data));
+	}, [url]);
+
+	return data;
+}
+
+// Uso en diferentes componentes
+function UserList() {
+	const users = useFetch<{ id: number; name: string }[]>("https://api.example.com/users");
+	if (!users) return <p>Cargando...</p>;
+	return (
+		<ul>
+			{users.map((user) => (
+				<li key={user.id}>{user.name}</li>
+			))}
+		</ul>
+	);
+}
+
+function ProductList() {
+	const products = useFetch<{ id: number; name: string }[]>("https://api.example.com/products");
+	if (!products) return <p>Cargando...</p>;
+	return (
+		<ul>
+			{products.map((product) => (
+				<li key={product.id}>{product.name}</li>
+			))}
+		</ul>
+	);
+}
+```
+
+Ahora, useFetch encapsula la lógica de llamada a la API y se puede reutilizar en cualquier componente.
+
+---
+
+### **Conclusión**
+
+Estos patrones de diseño te ayudarán a escribir código más limpio, reutilizable y escalable en React. 🚀
+
+- **Container/Presenter** → Separa lógica de presentación.
+- **Render Props** → Permite compartir lógica entre componentes.
+- **Custom Hooks** → Encapsula lógica reutilizable de estado.

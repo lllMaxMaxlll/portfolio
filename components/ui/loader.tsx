@@ -11,7 +11,7 @@ interface LoaderEffectProps {
 }
 
 const LoaderEffect: React.FC<LoaderEffectProps> = ({
-	width = "80%",
+	width = "40%",
 	height = "3rem",
 	borderRadius = "1rem",
 	duration = 1.5,

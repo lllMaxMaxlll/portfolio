@@ -1,7 +1,7 @@
-import { getProjects } from "@/actions/projectsActions";
+import { getAllProjects } from "@/actions/projectsActions";
 import { Card, Carousel } from "@/components/ui/cardsCarousel";
 import { Metadata } from "next";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
 import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -25,8 +25,9 @@ export async function generateMetadata({ params }: { params: ParamsType }): Prom
 }
 
 export default async function ProjectsCarousel() {
+	const locale = await getLocale();
 	const t = await getTranslations("Projects");
-	const projects = await getProjects();
+	const projects = await getAllProjects(locale);
 
 	if (!projects.length) {
 		return notFound();
@@ -34,23 +35,31 @@ export default async function ProjectsCarousel() {
 
 	const cards = projects.map((project, index) => (
 		<Card
-			key={project.id}
+			key={project.slug}
 			card={{
 				title: project.title,
-				technologies: project.technologies,
+				tags: project.tags,
 				images: project.images,
 				src: project.images[0],
 				content: (
 					<div className="text-primary-foreground dark:text-primary">
-						<p>{project.description}</p>
+						<p>{project.summary}</p>
 						<div className="flex justify-center">
-							{project.githubLink && (
-								<Link href={project.githubLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
+							{project.github && (
+								<Link
+									href={project.github}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="p-6 hover:text-neutral-400 transition hover:scale-110">
 									<GrGithub size="24px" />
 								</Link>
 							)}
-							{project.websiteLink && (
-								<Link href={project.websiteLink} target="_blank" rel="noopener noreferrer" className="p-6 hover:text-neutral-400">
+							{project.website && (
+								<Link
+									href={project.website}
+									target="_blank"
+									rel="noopener noreferrer"
+									className="p-6 hover:text-neutral-400 transition hover:scale-110">
 									<GrLink size="24px" />
 								</Link>
 							)}
