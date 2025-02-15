@@ -5,7 +5,7 @@ import { useTranslations } from "next-intl";
 import { useEffect } from "react";
 import {Link} from "next-view-transitions";
 
-export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
+export default function Error({ error }: { error: Error & { digest?: string }}) {
 	const t = useTranslations("Error");
 
 	useEffect(() => {
