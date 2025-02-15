@@ -1,0 +1,212 @@
+---
+slug: "javascript-101-must-know-concepts"
+title: "JavaScript 101: Conceptos Claves para Principiantes"
+summary: "JavaScript es un lenguaje fundamental para el desarrollo web. Esta guía cubre conceptos esenciales como variables, funciones, bucles y más para ayudar a los principiantes a comenzar con confianza."
+date: "2025-02-15"
+image: /images/blog-posts-images/javascript-101-must-know-concepts.jpeg
+tags: ["JavaScript", "Learning to Code", "Coding tips"]
+---
+
+JavaScript es la columna vertebral del desarrollo web, permitiéndote construir sitios web interactivos y dinámicos. Si estás comenzando, aprender sus conceptos básicos es crucial. ¡Exploremos los fundamentos!
+
+## 1. Variables
+Las variables se utilizan para almacenar información que tu programa puede usar más tarde. JavaScript proporciona diferentes tipos de variables **(let, const, var)**.
+
+```typescript
+let nombre = "Alice"; // Puede ser reasignada
+const edad = 25; // No puede ser reasignada
+var esDesarrollador = true; // Tiene alcance de función, evita usarla (sintaxis antigua)
+```
+## 2. Tipos de Datos
+
+- **String**: se usa para almacenar valores de texto.
+- **Number**: se usa para representar números enteros o de punto flotante.
+- **Boolean**: puede ser true (verdadero) o false (falso).
+- **Undefined**: valor predeterminado de una variable que no ha sido asignada.
+- **Null**: representa la ausencia intencional de cualquier valor u objeto.
+- **Array**: lista ordenada de valores.
+- **Object**: almacena pares clave-valor.
+
+```typescript
+let nombre = "Alice"; // String
+let edad = 26; // Number
+let enLinea = true; // Boolean
+let variableDesconocida; // Undefined
+let valorVacio = null; // Null
+let colores = ['rojo', 'verde', 'azul']; // Array
+let persona = { nombre: "John", edad: 30 }; // Object
+```
+## 3. Operadores
+
+Los operadores nos permiten realizar operaciones sobre valores y variables. Existen operadores aritméticos **( +, -, *, / )**, operadores de comparación **( ==, ===, >, < )** y operadores lógicos **( &&, ||, ! )**.
+
+### Operadores Aritméticos:
+
+```typescript
+let suma = 10 + 5; // 15 (suma)
+let diferencia = 10 - 5; // 5 (resta)
+let producto = 10 * 5; // 50 (multiplicación)
+let cociente = 10 / 5; // 2 (división)
+let residuo = 10 % 3; // 1 (residuo de la división)
+```
+### Operadores de Comparación:
+
+```typescript
+let esIgual = 10 == "10"; // (true) compara solo valores
+let esEstrictamenteIgual = 10 === "10"; // (false) compara valor y tipo
+let esMayor = 10 > 5; // (true) verifica si 10 es mayor que 5
+let esMenor = 9 < 4; // (false) verifica si 9 es menor que 4
+```
+### Operadores Lógicos:
+
+```typescript
+let x = true;
+let y = false;
+
+console.log(x && y); // false (operador AND - ambos deben ser true)
+console.log(x || y); // true (operador OR - al menos uno debe ser true)
+console.log(!x); // false (operador NOT - invierte el valor booleano)
+```
+## 4. Flujo de Control
+
+Las estructuras de control como if-else y switch ayudan a tomar decisiones en el código.
+
+### Declaraciones If-Else:
+
+```typescript
+let edad = 20;
+
+if (edad >= 18) {
+console.log("¡Puedes votar!");
+// Ejecuta este bloque si la edad es 18 o más
+} else {
+console.log("Eres demasiado joven para votar.");
+// Ejecuta este bloque si la edad es menor a 18
+}
+```
+### Declaraciones Switch:
+
+La declaración switch verifica el valor de día.
+
+- Si día es 1, imprime "Lunes".
+- Si día es 2, imprime "Martes".
+- ...
+- Si no coincide con ningún caso, se ejecuta el bloque default, imprimiendo "Fin de semana o día inválido".
+- La declaración break evita que la ejecución continúe al siguiente caso.
+```typescript
+let dia = 3;
+
+switch (dia) {
+    case 1:
+        console.log("Lunes");
+    break;
+    case 2:
+        console.log("Martes");
+    break;
+    case 3:
+        console.log("Miércoles");
+    break;
+    case 4:
+        console.log("Jueves");
+    break;
+    case 5:
+        console.log("Viernes");
+    break;
+    default:
+        console.log("Fin de semana o día inválido");
+}
+```
+## 5. Funciones
+
+Las funciones te permiten agrupar código en bloques reutilizables, haciendo tu programa más eficiente y modular.
+
+```typescript
+function saludar(nombre) {
+return "Hola, " + nombre + "!";
+// Función que retorna un saludo
+}
+console.log(saludar("Alice")); // ¡Hola, Alice!
+```
+
+## 6. Arrays y Objetos
+
+Los arrays se usan para almacenar múltiples valores en una sola variable, mientras que los objetos almacenan datos como pares clave-valor.
+
+### Arrays:
+
+```typescript
+let frutas = ["Manzana", "Banana", "Cereza"];
+console.log(frutas[0]); // Manzana
+```
+### Objetos:
+
+```typescript
+let persona = { nombre: "Alice", edad: 25 };
+console.log(persona.nombre); // Alice
+```
+## 7. Bucles
+
+Los bucles te permiten ejecutar un bloque de código varias veces, lo que es útil para manejar tareas repetitivas.
+
+### Bucle For:
+
+```typescript
+for (let i = 1; i <= 5; i++) {
+console.log("Número:", i);
+// Imprime números del 1 al 5
+}
+```
+## 8. Características de ES6
+
+JavaScript ES6 introdujo características modernas como literales de plantilla y desestructuración para mejorar la legibilidad y eficiencia del código.
+
+### Template Literals:
+
+Permiten incrustar expresiones dentro de cadenas de texto usando comillas invertidas. Hacen la concatenación de cadenas más limpia y legible.
+
+```typescript
+Copy
+const nombre = "Alice";
+console.log(`Hola, ${nombre}!`);
+// ${nombre} es un marcador de posición para el valor de la variable
+```
+### Desestructuración:
+
+Permite extraer valores de objetos o arrays y asignarlos a variables de manera concisa.
+
+```typescript
+const persona = { nombre: "Alice", edad: 25 };
+const { nombre } = persona;
+console.log(nombre); // Alice
+
+let frutas = ["Manzana", "Banana", "Cereza"];
+const [primeraFruta] = frutas;
+console.log(primeraFruta); // Manzana
+```
+### Funciones Flecha:
+
+Proporcionan una sintaxis más corta y concisa para escribir funciones en JavaScript. Son comúnmente usadas en JavaScript moderno por su legibilidad y comportamiento de retorno implícito.
+
+```typescript
+const saludar = (nombre) => `Hola, ${nombre}!`;
+console.log(saludar("Alice")); // Salida: ¡Hola, Alice!
+
+const sumar = (a, b) => a + b;
+console.log(sumar(5, 10)); // Salida: 15
+```
+## 9. Manejo de Errores
+
+JavaScript usa **try...catch** para manejar errores y evitar que el código se detenga.
+
+```typescript
+try {
+let resultado = operacionArriesgada();
+// Intenta ejecutar una función que puede causar un error
+} catch (error) {
+console.log("¡Algo salió mal!", error);
+// Si hay un error, muestra el mensaje
+}
+```
+## Conclusión
+
+Dominar estos conceptos básicos de JavaScript te ayudará a construir aplicaciones interactivas y dinámicas. ¡Sigue practicando y pronto estarás programando como un profesional!

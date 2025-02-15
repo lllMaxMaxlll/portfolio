@@ -1,0 +1,203 @@
+---
+title: "JavaScript 101: Must-Know Concepts for Beginners"
+summary: "JavaScript is a fundamental language for web development. This guide covers essential concepts like variables, functions, loops, and more to help beginners get started with confidence."
+date: "2025-02-15"
+image: /images/blog-posts-images/javascript-101-must-know-concepts.jpeg
+tags: ["JavaScript", "Learning to Code", "Coding tips"]
+---
+
+JavaScript is the backbone of web development, allowing you to build interactive and dynamic websites. If you're just starting out, learning its core concepts is crucial. Let's explore the fundamentals!
+
+## 1. Variables
+Variables are used to store information that your program can use later. JavaScript provides different types of variables (let, const, var).
+
+```typescript
+let name = "Alice"; // Can be reassigned
+const age = 25; // Cannot be reassigned
+var isDeveloper = true; // is function-scoped, avoid using it (old syntax)
+```
+
+## 2. Data Types
+- **String**: used to store text values.
+- **Number**: used to represent integers or floating-point numbers.
+- **Boolean**: can either be true or false.
+- **Undefined**: default value of a variable that hasn’t been assigned any value.
+- **Null**: represents the intentional absence of any value or object.
+- **Array**: ordered list of values.
+- **Object**: store key-value pairs.
+
+```typescript
+let firstName = "Alice"; // String
+let age = 26; // Number
+let isOnline = true; // Boolean
+let unknownVariable; // Undefined
+let emptyValue = null; // Null
+let colors = ['red', 'green', 'blue']; // Array
+let person = { name: "John", age: 30 }; // Object
+```
+
+## 3. Operators
+Operators allow us to perform operations on values and variables. There are arithmetic operators **(+, -, *, / )**, comparison operators **(==, ===, >, < )**, and logical operators **(&&, ||, !)**.
+
+### Arithmetic Operators:
+```typescript
+let sum = 10 + 5; // 15 (addition)
+let difference = 10 - 5; // 5 (subtraction)
+let product = 10 * 5; // 50 (multiplication)
+let quotient = 10 / 5; // 2 (division)
+let remainder = 10 % 3; // 1 (remainder of the division)
+```
+
+### Comparison Operators:
+```typescript
+let isEqual = 10 == "10"; // (true) compare values only
+let isStrictEqual = 10 === "10"; // (false) compare both value and type
+let isGreater = 10 > 5; // (true) check if 10 is greater than 5
+let isLess = 9 < 4; // (false) check if 9 is less than 4
+```
+
+### Logical Operators:
+```typescript
+let x = true;
+let y = false;
+
+console.log(x && y); // false (AND operator - both must be true)
+console.log(x || y); // true (OR operator - at least one must be true)
+console.log(!x); // false (NOT operator - inverts the boolean value)
+```
+
+## 4. Control Flow
+Control flow structures like **if-else** and **switch** statements help in making decisions in code.
+
+### If-Else Statements:
+```typescript
+let age = 20;
+
+if (age >= 18) {
+  console.log("You can vote!");
+  // Executes this block if age is 18 or more
+} else {
+  console.log("You’re too young to vote.");
+  // Executes this block if age is less than 18
+}
+```
+### Switch Statements:
+**Explanation:** The switch statement checks the value of day.
+- If day matches 1, it prints "Monday".
+- If day matches 2, it prints "Tuesday".
+- ...
+- If no case matches, the default block runs, printing "Weekend or Invalid Day".
+- The break statement prevents the execution from continuing to the next case.
+
+```typescript
+let day = 3;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+    break;
+    case 2:
+        console.log("Tuesday");
+    break;
+    case 3:
+        console.log("Wednesday");
+    break;
+    case 4:
+        console.log("Thursday");
+    break;
+    case 5:
+        console.log("Friday");
+    break;
+    default:
+        console.log("Weekend or Invalid Day");
+}
+```
+
+## 5. Functions
+Functions allow you to group code into reusable blocks, making your program more efficient and modular.
+
+```typescript
+function greet(name) {
+  return "Hello, " + name + "!";
+  // function that returns a greeting string
+}
+console.log(greet("Alice")); // Hello Alice!
+```
+
+## 6. Arrays & Objects
+Arrays are used to store multiple values in a single variable, while objects store data as key-value pairs.
+
+### Arrays:
+```typescript
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[0]); // Apple
+```
+
+### Objects:
+```typescript
+let person = { name: "Alice", age: 25 };
+console.log(person.name); // Alice
+```
+
+## 7. Loops
+Loops allow you to execute a block of code multiple times, making it useful for handling repetitive tasks.
+
+### For Loop:
+```typescript
+for (let i = 1; i <= 5; i++) {
+  console.log("Number:", i);
+  // Print number from 1 to 5
+}
+```
+
+## 8. ES6 Features
+JavaScript ES6 introduced modern features like template literals and destructuring to improve code readability and efficiency.
+
+### Template Literals:
+Allow you to embed expressions inside string literals using backticks. They make string concatenation cleaner and more readable.
+
+```typescript
+const name = "Alice";
+console.log(`Hello, ${name}!`);
+// ${name} is a placeholder for the variable value
+```
+
+### Destructuring:
+Allows you to extract values from objects or arrays and assign them to variables in a concise way.
+
+```typescript
+const person = { name: "Alice", age: 25 };
+const { name } = person;
+console.log(name); // Alice
+
+let fruits = ["Apple", "Banana", "Cherry"];
+const [firstFruit] = fruits;
+console.log(firstFruit); // Apple
+```
+
+### Arrow Functions:
+Provide a shorter and more concise syntax for writing functions in JavaScript. They are commonly used in modern JavaScript because of their readability and implicit return behavior.
+
+```typescript
+const greet = (name) => `Hello, ${name}!`;
+console.log(greet("Alice")); // Output: Hello, Alice!
+
+const add = (a, b) => a + b;
+console.log(add(5, 10)); // Output: 15
+```
+
+## 9. Error Handling
+JavaScript uses **try...catch** to handle errors and prevent crashes in code execution.
+
+```typescript
+try {
+  let result = riskyOperation();
+  // Trying to run a function that may cause an error
+} catch (error) {
+  console.log("Something went wrong!", error);
+  // If there's an error, show the message
+}
+```
+
+## Conclusion
+Mastering these JavaScript fundamentals will help you build interactive and dynamic applications. Keep practicing, and soon you'll be coding like a pro! 🚀

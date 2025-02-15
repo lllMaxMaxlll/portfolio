@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { useTranslations } from "next-intl";
 import { useEffect } from "react";
+import {Link} from "next-view-transitions";
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
 	const t = useTranslations("Error");
@@ -16,8 +17,10 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 			<div className="flex flex-col justify-center items-center gap-y-5">
 				<h2 className="text-2xl sm:text-4xl font-bold text-center">{t("title")}</h2>
 				<p className="text-center">{t("message")}</p>
-				<Button variant="ghost" className="w-24 " onClick={() => reset()}>
-					{t("button")}
+				<Button variant="ghost"  asChild>
+					<Link href="/">
+						{t("button")}
+					</Link>
 				</Button>
 			</div>
 		</section>

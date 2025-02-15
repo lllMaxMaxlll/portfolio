@@ -49,7 +49,7 @@
 	"Error": {
 		"title": "Something went wrong",
 		"message": "Please try again later",
-		"button": "Try again"
+		"button": "Go home"
 	},
 	"Blog": {
 		"comingsoon": "Coming soon",

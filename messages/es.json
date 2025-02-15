@@ -49,7 +49,7 @@
 	"Error": {
 		"title": "Algo salio mal",
 		"message": "Intentalo más tarde",
-		"button": "Reintentar"
+		"button": "Volver al inicio"
 	},
 	"Blog": {
 		"comingsoon": "Proximamente",
